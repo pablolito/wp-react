@@ -12,6 +12,10 @@ http.createServer(function(request, response) {
   if (uri === '/dist/bundle.js') {
     filename = path.join(process.cwd(), uri);
   }
+
+  if (uri === '/dist/main.bundle.css') {
+    filename = path.join(process.cwd(), uri);
+  }
     
 
     //,filename = process.cwd();
