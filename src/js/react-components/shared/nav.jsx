@@ -13,7 +13,7 @@ export class Nav extends React.Component {
             <nav className="">
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/filmographie">Filomographie</Link></li>
+                    <li><Link to="/filmographie">Filmographie</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </nav>
