@@ -1,5 +1,5 @@
 {
-  "name": "hello",
+  "name": "react-wp",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -19,7 +19,6 @@
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "sass-loader": "^6.0.3",
-    "style-loader": "^0.17.0",
     "webpack": "^2.2.1"
   },
   "scripts": {
