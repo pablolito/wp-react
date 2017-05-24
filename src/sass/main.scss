@@ -1,7 +1,12 @@
-.testSass{
-    color: pink;
-    font-size: 1rem;
-    .titi{
-        color: green;
-    }
-}
+/* foundation framework */
+@import './foundation/foundation.scss';
+
+/* foundation mixin */
+@include foundation-global-styles;
+@include foundation-forms;
+@include foundation-button;
+@include foundation-button-group;
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+
+@import './modules/base.scss';
