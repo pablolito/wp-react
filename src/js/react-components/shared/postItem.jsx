@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-export class PostItemTest extends React.Component {
+export class PostItem extends React.Component {
     constructor(props){
         super(props);
     }
@@ -9,13 +9,25 @@ export class PostItemTest extends React.Component {
         
     }
     render() {
-        let toto = this.props.toto;
-        let decoded = $('<div/>').html(toto.acf.contenu_video).text();
-        let videoContent = <div dangerouslySetInnerHTML={{__html: decoded}}></div>
+        
+        let data = this.props.data;
+        console.log(data);
+        let embedVideo = $('<div/>').html(data.acf.contenu_video).text();
+        embedVideo = <div dangerouslySetInnerHTML={{__html: embedVideo}}></div>;
+        let imageGroup = <div className="img-group">
+                <img src={data.acf.upload_photo_slider.sizes.medium} />
+                <caption>
+                    <div>
+                        <h2><span dangerouslySetInnerHTML={{__html: data.title.rendered}}></span></h2>
+                        <p>{data.acf.description}</p>
+                        <span className="button"><a href="#">Voir le projet</a></span>
+                    </div>
+                </caption>
+                </div>
         return (
-            <article>
-                {videoContent}
-            </article>
+            <div className="columns">
+                {imageGroup}
+            </div>
         );
 
     }

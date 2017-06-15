@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 //import { Loader } from './react-components/shared/loader.jsx';
-import { PostItemTest } from '../shared/postItem.jsx';
+import { PostItem } from '../shared/postItem.jsx';
+import { BannerPage } from '../shared/bannerPage.jsx';
 import $ from 'jquery';
 
 export class Posts extends React.Component {
@@ -12,7 +13,7 @@ export class Posts extends React.Component {
         }
     }
     getPostsList(category){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts?filter[category_name]="+category)
+        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts?categories=15")
         .done(( json ) => {
             this.setState({
                 data : json
@@ -30,18 +31,28 @@ export class Posts extends React.Component {
     render() {
         
         if(this.state.data == null){
-            console.log(this.state.data);
-            return (<p>Loading</p>);
+            return (<div className="loader-container">
+                <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
+                </div>);
         }
-            
+         console.log(this.state.data);   
         return (
-
+            
             <div className="posts">
-                {/*<Loader isLoading="true" />*/}
-                <h1>Filmographie</h1>
-                {this.state.data.map(
-                    (item, index) => <PostItemTest key={'post'+index} toto={item} />
-                )}
+                <div className="cnt-center">
+                    <BannerPage title="Quelques Réalisations" description="Lorem ipsum" />
+                    <ul className="inbl-list text-center filter-menu">
+                        <li>Filtrer par : </li>
+                        <li><span>Filtre 1</span></li>
+                        <li><span>Filtre 2</span></li>
+                        <li><span>Filtre 3</span></li>
+                    </ul>
+                    <div className="row collapse">
+                        {this.state.data.map(
+                            (item, index) => /*(item.acf.contenu_video !=="" ?*/ <PostItem key={'post'+index} data={item} /> /*: null)*/
+                        )}
+                    </div>
+                </div>
             </div>
         );
 

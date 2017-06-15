@@ -19,17 +19,26 @@ export class Home extends React.Component {
             this.setState({data: err});
         }
     });
-    
   }
 
   componentDidMount() {
-    this.getSliderDatas('http://axelfalguier.com/wp-json/wp/v2/posts?filter[category_name]=filmographie');
+    this.getSliderDatas("http://axelfalguier.com/wp-json/wp/v2/posts?categories=16,15");
+  }
+
+  componentWillMount() {
+    document.body.classList.add('home');
+  }
+  
+  componentWillUnmount() {
+    document.body.classList.remove('home');
   }
 
 
     render() {
         if(this.state.data == null){
-            return (<p>Loading</p>);
+            return (<div className="loader-container">
+                <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
+                </div>);
         }
 
         
