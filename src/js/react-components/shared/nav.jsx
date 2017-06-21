@@ -20,7 +20,6 @@ export class Nav extends React.Component {
                             <ul className="inbl-list">
                                 <li><NavLink activeClassName='active' to="/">Home</NavLink></li>
                                 <li><NavLink activeClassName='active'  to="/filmographie">Filmographie</NavLink></li>
-                                <li></li>
                                 <li><NavLink activeClassName='active' to="/realisateur">Le réalisateur</NavLink></li>
                                 <li><NavLink activeClassName='active' to="/contact">Contact</NavLink></li>
                             </ul>

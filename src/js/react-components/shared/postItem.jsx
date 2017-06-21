@@ -20,7 +20,7 @@ export class PostItem extends React.Component {
                     <div>
                         <h2><span dangerouslySetInnerHTML={{__html: data.title.rendered}}></span></h2>
                         <p>{data.acf.description}</p>
-                        <span className="button"><a href="#">Voir le projet</a></span>
+                        <span className="button"><Link to={"/filmographie/"+data.id}>Voir le projet</Link></span>
                     </div>
                 </caption>
                 </div>
