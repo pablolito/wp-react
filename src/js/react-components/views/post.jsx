@@ -23,8 +23,14 @@ export class Post extends React.Component {
             });
         });
     }
+    renderMovie(embed){
+      let decoded = $('<div/>').html(embed).text();
+      let videoContent = <div dangerouslySetInnerHTML={{__html: decoded}}></div>
+      return videoContent;
+  }
     componentDidMount(){
         this.getPost(this.props.match.params.id);
+        console.log(this.state.data);
     }
     render() {
         if(this.state.data == null){
@@ -32,14 +38,23 @@ export class Post extends React.Component {
                 <svg className="icon icon-loader"><use xlinkHref="/dist/images/sprite-icons.svg#icon-spinner4" /></svg>
                 </div>);
         }
-        console.log(this.state.data); 
+        console.log(this.state.data);
         return (
             
             <div className="post">
-                <div className="cnt-center">
-                    <p>{this.state.data.acf.contenu_article}</p>
+                
+                <div className="row">
+                    <div className="columns small-12 medium-4 large-4">
+                        {this.renderMovie(this.state.data.acf.contenu_video)}
+                    </div>
+                    <div className="columns small-12 medium-8 large-8">
+                        <h1>{this.state.data.title.rendered}</h1>
+                        <p>{this.state.data.acf.contenu_article}</p>
+                    </div>
                 </div>
+                    
             </div>
+            
         );
 
     }
