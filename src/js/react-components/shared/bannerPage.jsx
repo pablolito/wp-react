@@ -8,7 +8,7 @@ export class BannerPage extends React.Component {
     render() {
         return (
             <div className="banner">
-                <div className="filter">
+                <div className="filter-cover">
                     <div className="text-center">
                         <h1>{this.props.title}</h1>
                         <p><strong>{this.props.description}</strong></p>

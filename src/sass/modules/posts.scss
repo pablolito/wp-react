@@ -1,7 +1,7 @@
 .posts{
     padding: 0 0 2rem 0;
     .filter-menu{
-        padding: 3rem 0;
+        margin-bottom: 2rem;
         li{
             padding: 0 2rem;
         }
@@ -12,8 +12,17 @@
             cursor: pointer;
         }
     }
+    .mozaic{
+        display: -ms-flexbox;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        display: flex;
+    }
     .img-group{
-        position: relative;
+        width: 33.3%;
+        > div{
+            position: relative;
+        }
         img{
             width: 100%;
         }
