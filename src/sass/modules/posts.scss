@@ -1,5 +1,8 @@
 .posts{
     padding: 0 0 2rem 0;
+    iframe{
+        width: 100%;
+    }
     .filter-menu{
         margin-bottom: 2rem;
         li{
@@ -52,11 +55,5 @@
                 opacity: 1;
             }
         }
-    }
-}
-.post{
-    iframe{
-        width: 100%;
-        height: auto;
     }
 }

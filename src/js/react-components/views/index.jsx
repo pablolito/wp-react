@@ -12,8 +12,8 @@ export class Home extends React.Component {
         url: url,
         dataType: 'json',
         success: (data) => {
-            let acf = data.map((v)=>v.acf)
-            this.setState({data: acf});
+            //let datas = data.map((v)=>v)
+            this.setState({data: data});
         },
         error: (xhr, status, err) => {
             this.setState({data: err});
