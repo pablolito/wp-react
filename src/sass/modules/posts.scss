@@ -7,27 +7,40 @@
         margin-bottom: 2rem;
         li{
             padding: 0 2rem;
+            &.active, &:hover{
+                span{
+                    background-color: #000;
+                    color: #FFF;
+                }
+            }
         }
         span{
             padding: 0 1rem;
             border: 1px solid #000;
             color: #000;
+            background-color: #FFF;
+            padding: 0.5rem 1rem;
             cursor: pointer;
+            transition: all 0.5s ease;
         }
     }
     .mozaic{
-        display: -ms-flexbox;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
         display: flex;
+        flex-flow: column wrap;
+        //max-height: 800px;
+        height: 100vw;
+        overflow: hidden;
     }
     .img-group{
-        width: 33.3%;
+        border: 1px solid grey;
+        flex: 0 0 auto;
+        //display: inline-flex;     
         > div{
             position: relative;
         }
         img{
             width: 100%;
+            background-size: cover;
         }
         caption{
             position: absolute;
@@ -47,6 +60,9 @@
                 p{
                     margin-bottom: 0.5rem;
                 }
+                .button{
+                    margin-top: 1rem;
+                }
             }
             
         }
@@ -54,6 +70,29 @@
             caption{
                 opacity: 1;
             }
+        }
+    }
+}
+.post{
+    .project-info{
+        border: 1px dashed #000;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        li{
+            margin-right: 0.5rem;
+        }
+    }
+    .tags-list{
+        margin-top: 0.5rem;
+        li{
+            background: #FFF;
+            color: #000;
+            padding: 0.3rem 0.5rem;
+            margin-right: 1rem;
+            &:last-child{
+                margin-right: 0;
+            }
+
         }
     }
 }

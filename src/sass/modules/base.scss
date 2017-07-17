@@ -205,16 +205,25 @@ header{
         font-family: $secondary-font;
         font-size: 2rem;
         z-index: 3;
+        .button{
+            margin-top: 1rem;
+        }
         &.intro{
             top: 50%;
-            @include vertical-align(absolute);
-            margin: 0 auto;
+            left: 50%;
+            bottom: auto;
+            right: auto;
+            transform: translate(-50%, -50%);
+            position: relative;
             background: none;
             font-size: 4rem;
             color: #FFF;
-            max-width: 80%;
+            width: 90%;
             text-align: center;
-            width: auto;
+            max-width: none;
+            .description{
+                font-size: 2rem;
+            }
         }
     }
     .slick-list, .slick-track{
@@ -236,10 +245,12 @@ header{
                 &:before{
                     width: 20px;
                     height: 20px;
+                    border-radius: 20px;
+                    background-color: #FFF;
                     box-shadow: 1px 1px 5px 0px #656565;
-                    color: #FFF;
                     font-size: 1rem;
                     opacity: 1;
+                    content: '';
                 }
         }
         .slick-active{
@@ -261,10 +272,10 @@ header{
         }
     }
     .slick-next{
-        right: 0;
+        right: 1rem;
     }
     .slick-prev{
-        left: 0;
+        left: 1rem;
     }
     
 }

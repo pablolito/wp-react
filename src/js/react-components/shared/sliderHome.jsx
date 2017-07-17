@@ -33,7 +33,11 @@ export class SliderHome extends React.Component {
           <svg onClick={()=>this.toggleModal(itemKey)} className="icon icon-play"><use xlinkHref="dist/images/sprite-icons.svg#icon-play2" /></svg>
           : null}
           <div className={(itemValue.categories[0]=="16") ? "caption intro" : "caption"}>
-            <p>{itemValue.acf.description}</p>
+            <p dangerouslySetInnerHTML={{__html: itemValue.title.rendered}}></p>
+            {(itemValue.categories[0]=="16" && itemValue.acf.description !=="") ? 
+              <p className="description" dangerouslySetInnerHTML={{__html: itemValue.acf.description}}></p> 
+              : ""
+            }
             {(itemValue.categories[0]=="15") ? <div className="button"><Link to={"/filmographie/"+itemValue.id}>Découvrir le projet</Link></div> : ""}
           </div>
         </div>

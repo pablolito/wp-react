@@ -7,11 +7,12 @@ export class PostItem extends React.Component {
     }
     render() {
         let data = this.props.data;
-        let imageGroup = <div><img src={data.acf.upload_photo_slider.sizes.medium} />
+
+        let imageGroup = <div><img src={data.acf.upload_photo_slider.sizes.medium_large} />
                 <caption>
                     <div>
                         <h2><span dangerouslySetInnerHTML={{__html: data.title.rendered}}></span></h2>
-                        <p>{data.acf.description}</p>
+                        {(data.acf.description) ? <p dangerouslySetInnerHTML={{__html: data.acf.description}}></p> : ""}
                         <span className="button"><Link to={"/filmographie/"+data.id}>Voir le projet</Link></span>
                     </div>
                 </caption></div>

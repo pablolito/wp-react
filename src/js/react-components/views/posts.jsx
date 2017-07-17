@@ -10,9 +10,12 @@ export class Posts extends React.Component {
         this.tagsTab = [];
         this.state = {
             data: null,
-            tagsData: null
+            tagsData: null,
+            allTagsAreActive: true,
+            tagActiveIndex: -1
         }
         this.getFilteredPost = this.getFilteredPost.bind(this);
+        this.getPostsList = this.getPostsList.bind(this);
     }
     addTagsInArray(tab){
         tab.map(item => this.tagsTab.push(item)); // loop 2
@@ -24,9 +27,10 @@ export class Posts extends React.Component {
             json.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
             this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
             this.getTagsList(this.tagsTab);
-            
             this.setState({
-                data : json
+                data : json,
+                allTagsAreActive: true,
+                tagActiveIndex: -1
             });
         })
         .fail(( jqxhr, textStatus, error ) => {
@@ -35,11 +39,13 @@ export class Posts extends React.Component {
             });
         });
     }
-    getFilteredPost(id){
+    getFilteredPost(id, index){
         $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts?tags="+id)
         .done(( json ) => {
             this.setState({
-                data : json
+                data : json,
+                allTagsAreActive: false,
+                tagActiveIndex: index
             });
         })
         .fail(( jqxhr, textStatus, error ) => {
@@ -63,30 +69,28 @@ export class Posts extends React.Component {
     }
 
     renderTagsList(item, index){
-        console.log(item);
-        let itemList = <li key={'tags'+index} onClick={()=>this.getFilteredPost(item.id)}><span>{item.name}</span></li>;
+        let itemList = <li className={(this.state.tagActiveIndex === index) ? 'active' : ''} key={'tags'+index} onClick={()=>this.getFilteredPost(item.id, index)}><span>{item.name}</span></li>;
         return itemList;
     }
     componentDidMount(){
         this.getPostsList();
     }
     render() {
-        //console.log(this.tagsTab);
         if(this.state.data == null){
             return (<div className="loader-container">
                 <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
                 </div>);
         }
-        
+        console.log(this.state.data);
         return (
-            
             <div className="posts">
                 <BannerPage title="Quelques Réalisations" description="Lorem ipsum" />
                 <div className="cnt-center">
                     {(this.state.tagsData) ?
                     <ul className="inbl-list text-center filter-menu">
-                        <li>Filtrer par : </li>
-                        {this.state.tagsData.map((item, index) => this.renderTagsList(item, index))}
+                        <li>Thématiques : </li>
+                        <li className={(this.state.allTagsAreActive) ? "active" : ""} onClick={()=>this.getPostsList()}><span>Toutes</span></li>
+                        {this.state.tagsData.map((item, index) => this.renderTagsList(item, index))} 
                     </ul>
                     : ""
                     }
