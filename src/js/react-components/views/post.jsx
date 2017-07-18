@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 //import { Loader } from './react-components/shared/loader.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
 import utils from '../../utils';
@@ -53,7 +52,6 @@ export class Post extends React.Component {
         
     }
     render() {
-        console.log(this.state.data);
         if(this.state.data == null){
             return (<div className="loader-container">
                 <svg className="icon icon-loader"><use xlinkHref="/dist/images/sprite-icons.svg#icon-spinner4" /></svg>
@@ -64,7 +62,7 @@ export class Post extends React.Component {
 
         return (
             <div className="post">
-                <BannerPage title={this.state.data.title.rendered} description="" tagsList={this.state.tagsData} />
+                <BannerPage title={this.state.data.title.rendered} description="" tagsList={this.state.tagsData} returnLink={true} />
                 <div className="cnt-center">
                     <div className="row">
                         <div className="columns small-12 medium-7 large-7">

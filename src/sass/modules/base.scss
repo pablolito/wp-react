@@ -39,6 +39,9 @@ a{
 svg[class^="icon"]{
   display: block;
 }
+.va-middle{
+    @include vertical-align();
+}
 
 .close{
     font-size: 2rem;
@@ -139,6 +142,19 @@ header{
         text-transform: uppercase;
         font-family: $secondary-font;
     }
+    .link{
+        color: #fff;
+        margin-top: 1rem;
+        display: inline-block;
+        text-decoration: underline;
+    }
+}
+.alternative-banner{
+    margin-top: 2rem;
+    background: rgba(120, 171, 70, 0.8);
+    color: #FFF;
+    padding: 2rem 0;
+    border-top: 1px dashed #FFF;
 }
 .home{
     background-color: #000;

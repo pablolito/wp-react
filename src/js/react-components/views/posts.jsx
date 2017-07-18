@@ -72,8 +72,24 @@ export class Posts extends React.Component {
         let itemList = <li className={(this.state.tagActiveIndex === index) ? 'active' : ''} key={'tags'+index} onClick={()=>this.getFilteredPost(item.id, index)}><span>{item.name}</span></li>;
         return itemList;
     }
-    componentDidMount(){
+    componentWillMount(){
         this.getPostsList();
+    }
+    componentDidMont(){
+        
+    }
+    componentDidUpdate(){
+        let tab = [],
+        result,
+        imgGrpMaxHeight;
+        let nbCol = Math.ceil(($('.img-group').length) / 2);
+        $('.img-group').each(function(){
+            tab.push($(this).outerHeight());
+        });
+        imgGrpMaxHeight = tab.sort(function(a,b){ return (a - b); }).pop();
+        result = imgGrpMaxHeight*nbCol;
+        $(".mozaic").css({'max-height': result});
+        
     }
     render() {
         if(this.state.data == null){
@@ -81,11 +97,11 @@ export class Posts extends React.Component {
                 <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
                 </div>);
         }
-        console.log(this.state.data);
+        
         return (
             <div className="posts">
                 <BannerPage title="Quelques Réalisations" description="Lorem ipsum" />
-                <div className="cnt-center">
+                <div className="cnt-center mt2">
                     {(this.state.tagsData) ?
                     <ul className="inbl-list text-center filter-menu">
                         <li>Thématiques : </li>
