@@ -43,6 +43,10 @@ svg[class^="icon"]{
     @include vertical-align();
 }
 
+.mt2{
+    margin-top: 2rem;
+}
+
 .close{
     font-size: 2rem;
     position: absolute;

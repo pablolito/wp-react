@@ -10,7 +10,8 @@ module.exports = {
         filename: 'dist/bundle.js'
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        port: 8090
     },
     module: {
         rules: [

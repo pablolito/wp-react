@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
 export class NoMatch extends React.Component {
@@ -9,7 +10,12 @@ export class NoMatch extends React.Component {
 
     render() {
         return(
-            <h1>Oups, 404</h1>
+            <div className="cnt-center">
+                <div className="fail text-center mt2">
+                    <h1>Oups, page non trouvée :(</h1>
+                    <div className="button mt2"><Link to="/">Retour à la case départ</Link></div>
+                </div>
+            </div>
         );
     }   
 }
