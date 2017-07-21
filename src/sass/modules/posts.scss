@@ -4,10 +4,10 @@
         width: 100%;
     }
     .filter-menu{
-        padding-top: 2rem;
         margin-bottom: 2rem;
         li{
-            padding: 0 2rem;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
             &.active, &:hover{
                 span{
                     background-color: #000;
@@ -33,7 +33,7 @@
         overflow: hidden;
     }
     .img-group{
-        width: 50%;
+        width: 100%;
         flex: 0 0 auto;
         border: 3px solid #FFF;
         transition: all 0.5s ease;
@@ -98,6 +98,22 @@
                 margin-right: 0;
             }
 
+        }
+    }
+}
+
+@include breakpoint(medium){
+    .posts{
+        .filter-menu{
+            padding-top: 2rem;
+        }
+        .img-group{
+            width: 50%;
+        }
+    }
+    .filter-menu{
+        li{
+            padding: 0 2rem;
         }
     }
 }

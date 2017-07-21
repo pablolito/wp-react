@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import { Loader } from './react-components/shared/loader.jsx';
 import { PostItem } from '../shared/postItem.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
+import { Api } from '../../api';
+import utils from '../../utils'; 
 import $ from 'jquery';
 export class Posts extends React.Component {
     constructor(props){
@@ -16,14 +17,14 @@ export class Posts extends React.Component {
         }
         this.getFilteredPost = this.getFilteredPost.bind(this);
         this.getPostsList = this.getPostsList.bind(this);
+        this.api = new Api;
     }
     addTagsInArray(tab){
         tab.map(item => this.tagsTab.push(item)); // loop 2
     }
     getPostsList(){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts?categories=15")
-        .done(( json ) => {
-            
+        let postDataPromise = this.api.get("http://axelfalguier.com/wp-json/wp/v2/posts?categories=15");
+        postDataPromise.then(json => {
             json.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
             this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
             this.getTagsList(this.tagsTab);
@@ -32,12 +33,7 @@ export class Posts extends React.Component {
                 allTagsAreActive: true,
                 tagActiveIndex: -1
             });
-        })
-        .fail(( jqxhr, textStatus, error ) => {
-            this.setState({
-                data : error
-            });
-        });
+        }).catch(error => console.log(error));
     }
     getFilteredPost(id, index){
         $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts?tags="+id)
@@ -72,24 +68,24 @@ export class Posts extends React.Component {
         let itemList = <li className={(this.state.tagActiveIndex === index) ? 'active' : ''} key={'tags'+index} onClick={()=>this.getFilteredPost(item.id, index)}><span>{item.name}</span></li>;
         return itemList;
     }
-    componentWillMount(){
+
+    componentDidMount(){
         this.getPostsList();
     }
-    componentDidMont(){
-        
-    }
+
     componentDidUpdate(){
-        let tab = [],
-        result,
-        imgGrpMaxHeight;
-        let nbCol = Math.ceil(($('.img-group').length) / 2);
-        $('.img-group').each(function(){
-            tab.push($(this).outerHeight());
-        });
-        imgGrpMaxHeight = tab.sort(function(a,b){ return (a - b); }).pop();
-        result = imgGrpMaxHeight*nbCol;
-        $(".mozaic").css({'max-height': result});
-        
+        if(! utils.isSmallScreen()){
+            let tab = [],
+            mozaicHeight,
+            imgGrpMaxHeight;
+            let nbCol = Math.ceil(($('.img-group').length) / 2);
+            $('.img-group').each(function(){
+                tab.push($(this).outerHeight());
+            });
+            imgGrpMaxHeight = tab.sort(function(a,b){ return (a - b); }).pop();
+            mozaicHeight = imgGrpMaxHeight*nbCol;
+            $(".mozaic").css({'max-height': mozaicHeight});
+        } 
     }
     render() {
         if(this.state.data == null){
