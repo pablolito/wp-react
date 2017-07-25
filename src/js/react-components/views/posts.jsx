@@ -54,7 +54,7 @@ export class Posts extends React.Component {
     }
 
     getTagsList(idList){
-        let tagsListPromise = this.api.get("/w-json/wp/v2/tags?include="+idList.toString());
+        let tagsListPromise = this.api.get("/wp-json/wp/v2/tags?include="+idList.toString());
         tagsListPromise.then(json => {
             this.setState({
                 tagsData : json
