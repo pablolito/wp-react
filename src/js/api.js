@@ -1,17 +1,26 @@
 import $ from 'jquery';
 
 export class Api{
-    constructor(){
-
+    constructor(hostUrl){
+        this.hostUrl = hostUrl;
     }
     get(url){
-        return new Promise ((resolve, reject) =>
+        return new Promise ((resolve, reject) => {
         $.ajax({
             type: 'get',
-            url: url,
+            url: this.hostUrl+url,
             dataType: "json",
             cache: true
-        }).then(resolve, reject));
+        }).then(/*(data) => {
+            if(data.code){
+                throw "error";
+            }else{
+                resolve(data);
+            }
+        }*/
+        resolve, reject);
+        
+    });
     }
 }
 

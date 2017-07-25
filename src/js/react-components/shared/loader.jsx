@@ -1,23 +1,19 @@
-import React from 'React'
+import React from 'react'
 import $ from 'jquery';
 
 export class Loader extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            isLoading: this.props.isLoading,
-            isError: false
-        }
     }
-
-
     render() {
-        if (this.state.isLoading)
-            return (
-                <div className="text-center mb1">
-                    loading
-                </div>
-            );
-        return null;
+        return (
+            <div className="loader-container">
+                {(! this.props.isInError) ? 
+                    <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
+                    :
+                    <p>Oups impossible de charger les données !!</p>
+                }
+            </div>
+        );
     }
 }

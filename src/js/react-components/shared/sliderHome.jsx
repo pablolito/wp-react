@@ -46,7 +46,6 @@ export class SliderHome extends React.Component {
 
   renderSlideData(){
     let sortSildeData = this.data.sort(function(a,b) {return (a.slug === 'presentation' ? 1 : (a.categories[0] < b.categories[0]) ? 1 : ((b.categories[0] < a.categories[0]) ? -1 : 0) )});
-    //let sortSildeData = this.data.sort(function(a) {return (a.slug === 'presentation') ? 0 : 1 });
     let result = sortSildeData.map( (v, i) => ((v && i <= 3) ? this.renderItem(v, i) : null) );
     return result;
   }

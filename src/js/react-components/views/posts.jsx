@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PostItem } from '../shared/postItem.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
 import { Api } from '../../api';
+import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils'; 
 import $ from 'jquery';
 export class Posts extends React.Component {
@@ -13,55 +14,52 @@ export class Posts extends React.Component {
             data: null,
             tagsData: null,
             allTagsAreActive: true,
-            tagActiveIndex: -1
+            tagActiveIndex: -1,
+            isInError: false
         }
         this.getFilteredPost = this.getFilteredPost.bind(this);
         this.getPostsList = this.getPostsList.bind(this);
-        this.api = new Api;
+        this.api = new Api(utils.apiRoute);
     }
+
     addTagsInArray(tab){
         tab.map(item => this.tagsTab.push(item)); // loop 2
     }
+
     getPostsList(){
-        let postDataPromise = this.api.get("http://axelfalguier.com/wp-json/wp/v2/posts?categories=15");
+        let postDataPromise = this.api.get("/wp-json/wp/v2/posts?categories=15");
         postDataPromise.then(json => {
+            // get tags list 
             json.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
             this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
             this.getTagsList(this.tagsTab);
+            // put json data in state
             this.setState({
                 data : json,
                 allTagsAreActive: true,
                 tagActiveIndex: -1
             });
-        }).catch(error => console.log(error));
+        }).catch((onreject) => {this.setState({isInError: true})});
     }
+
     getFilteredPost(id, index){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts?tags="+id)
-        .done(( json ) => {
+        let filteredPostPromise = this.api.get("/wp-json/wp/v2/posts?tags="+id);
+        filteredPostPromise.then(json => {
             this.setState({
                 data : json,
                 allTagsAreActive: false,
                 tagActiveIndex: index
             });
-        })
-        .fail(( jqxhr, textStatus, error ) => {
-            this.setState({
-                data : error
-            });
-        });
+        }).catch((onreject) => {this.setState({isInError: true})});
     }
+
     getTagsList(idList){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/tags?include="+idList.toString())
-        .done(( json ) => {
+        let tagsListPromise = this.api.get("/w-json/wp/v2/tags?include="+idList.toString());
+        tagsListPromise.then(json => {
             this.setState({
                 tagsData : json
             });
-        })
-        .fail(( jqxhr, textStatus, error ) => {
-            this.setState({
-                tagsData : error
-            });
-        });
+        }).catch((onreject) => {this.setState({isInError: true})});
     }
 
     renderTagsList(item, index){
@@ -75,6 +73,7 @@ export class Posts extends React.Component {
 
     componentDidUpdate(){
         if(! utils.isSmallScreen()){
+            // calc mozaic height for flexbox column
             let tab = [],
             mozaicHeight,
             imgGrpMaxHeight;
@@ -88,10 +87,8 @@ export class Posts extends React.Component {
         } 
     }
     render() {
-        if(this.state.data == null){
-            return (<div className="loader-container">
-                <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
-                </div>);
+        if(this.state.data == null || this.state.tagsData == null){
+            return (<Loader isInError={this.state.isInError} />);
         }
         
         return (

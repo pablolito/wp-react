@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Loader } from './react-components/shared/loader.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
 import utils from '../../utils';
 import $ from 'jquery';
@@ -45,12 +44,11 @@ export class Post extends React.Component {
         return html;
     }
     
-  
     componentDidMount(){
         this.getPost(this.props.match.params.id);
         this.getPostTagsList(this.props.match.params.id);
-        
     }
+
     render() {
         if(this.state.data == null){
             return (<div className="loader-container">

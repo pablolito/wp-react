@@ -1,4 +1,5 @@
 let utils = {
+    apiRoute: "http://axelfalguier.com",
     htmlEntitiesDecode: (content) => {
         let parser = new DOMParser();
         let parsedHtml = parser.parseFromString(content, 'text/html').body.innerText;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-//import { Loader } from './react-components/shared/loader.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
 import utils from '../../utils';
 import $ from 'jquery';
