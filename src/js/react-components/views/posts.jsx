@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { PostItem } from '../shared/postItem.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
@@ -67,30 +68,36 @@ export class Posts extends React.Component {
         return itemList;
     }
 
+    setMozaicHeight(){
+        // calc mozaic height for flexbox column
+        /*let reactComp = ReactDOM.findDOMNode(this);
+        let imgGrp = reactComp.querySelector('.img-group');
+        console.log(imgGrp);*/
+        let tab = [],
+        mozaicHeight,
+        imgGrpMaxHeight;
+        let nbCol = Math.ceil(($('.img-group').length) / 2);
+        $('.img-group').each(function(){
+            tab.push($(this).outerHeight());
+        });
+        imgGrpMaxHeight = tab.sort(function(a,b){ return (a - b); }).pop();
+        mozaicHeight = imgGrpMaxHeight*nbCol;
+        $(".mozaic").css({'max-height': mozaicHeight});
+    }
+
     componentDidMount(){
         this.getPostsList();
     }
-
     componentDidUpdate(){
         if(! utils.isSmallScreen()){
-            // calc mozaic height for flexbox column
-            let tab = [],
-            mozaicHeight,
-            imgGrpMaxHeight;
-            let nbCol = Math.ceil(($('.img-group').length) / 2);
-            $('.img-group').each(function(){
-                tab.push($(this).outerHeight());
-            });
-            imgGrpMaxHeight = tab.sort(function(a,b){ return (a - b); }).pop();
-            mozaicHeight = imgGrpMaxHeight*nbCol;
-            $(".mozaic").css({'max-height': mozaicHeight});
-        } 
+            this.setMozaicHeight();
+        }
     }
+
     render() {
-        if(this.state.data == null || this.state.tagsData == null){
+        if( /*(this.state.tagsData == null) ||*/ (this.state.data == null) ){
             return (<Loader isInError={this.state.isInError} />);
         }
-        
         return (
             <div className="posts">
                 <BannerPage title="Quelques Réalisations" description="Lorem ipsum" />
@@ -109,7 +116,11 @@ export class Posts extends React.Component {
                         )}
                     </div>
                 </div>
+                {/* {
+                    (! utils.isSmallScreen()) ? this.setMozaicHeight() : ""
+                } */}
             </div>
+            
         );
 
     }
