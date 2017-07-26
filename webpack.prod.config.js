@@ -4,15 +4,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: ['./src/js/main.js', './src/sass/main.scss'],
-    devtool: '#inline-source-map',
+    /*devtool: '#inline-source-map',*/
     output: {
         //path: path.resolve(__dirname, 'dist'),
         filename: 'dist/bundle.js'
     },
-    devServer: {
+    /*devServer: {
         historyApiFallback: true,
         port: 8090
-    },
+    },*/
     module: {
         rules: [
             {
@@ -27,6 +27,14 @@ module.exports = {
         ]
     },
     plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        // This tells the Webpack and Babel for optimization for performance
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.NoErrorsPlugin(), // Makes sure Webpack will not compile if Errors
     new ExtractTextPlugin({ // define where to save the file
       filename: 'dist/[name].bundle.css',
       allChunks: true,
