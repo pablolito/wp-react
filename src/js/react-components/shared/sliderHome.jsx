@@ -26,7 +26,8 @@ export class SliderHome extends React.Component {
 
   renderItem(itemValue, itemKey){
       let itemSrc = {
-        backgroundImage: 'url(' + itemValue.acf.upload_photo_slider.url + ')'
+        backgroundImage: 'url(' + itemValue.acf.upload_photo_slider.url + ')',
+        backgroundPosition: 'center center'
       };
       let htmlContent = <div key={itemKey} className="item" style={itemSrc}>
           {(itemValue.acf.contenu_video!=="") ?
@@ -52,13 +53,13 @@ export class SliderHome extends React.Component {
   
  
   render() {
-    var settings = {
+    let settings = {
       dots: true,
       infinite: true,
       speed: 500,
       fade: true,
-      cssEase: 'linear',
-      draggable: false
+      draggable: false,
+      swipe: false
     };
 
     return (
