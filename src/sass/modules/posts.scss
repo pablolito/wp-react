@@ -4,9 +4,9 @@
         width: 100%;
     }
     .filter-menu{
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         li{
-            padding: 0 1rem;
+            padding: 0 0.5rem;
             margin-bottom: 1rem;
             &.active, &:hover{
                 span{
@@ -20,9 +20,11 @@
             border: 1px solid #000;
             color: #000;
             background-color: #FFF;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
             cursor: pointer;
             transition: all 0.5s ease;
+            display: block;
+            font-size: 0.8rem;
         }
     }
     .mozaic{
@@ -109,6 +111,13 @@
     .posts{
         .filter-menu{
             padding-top: 2rem;
+            margin-bottom: 2rem;
+            li{
+                padding: 0 1rem;
+                span{
+                    font-size: 1rem;
+                }
+            }
         }
         .img-group{
             width: 50%;
