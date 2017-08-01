@@ -11,7 +11,7 @@ export class Loader extends React.Component {
                 {(! this.props.isInError) ? 
                     <svg className="icon icon-loader"><use xlinkHref="dist/images/sprite-icons.svg#icon-spinner4" /></svg>
                     :
-                    <p>Oups impossible de charger les données !!</p>
+                    <p className="error">:( impossible de charger les données !!</p>
                 }
             </div>
         );

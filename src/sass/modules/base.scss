@@ -227,6 +227,11 @@ header{
             }
         }
     }
+    .loader-container{
+        .error{
+            color: #FFF;
+        }
+    }
 }
 
 /* ui component */
@@ -237,6 +242,9 @@ header{
     width: 100%;
     left: 0;
     text-align: center;
+    .error{
+        font-size: 2rem;
+    }
     .icon-loader{
         display: inline-block;
         animation: spin-loader 1s linear infinite;

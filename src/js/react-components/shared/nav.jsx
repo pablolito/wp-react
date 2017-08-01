@@ -32,7 +32,7 @@ export class Nav extends React.Component {
                         <nav>
                             <svg onClick={this.toggleMenu} width="24" height="24" className="icon icon-menu hide-for-large"><use xlinkHref="dist/images/sprite-icons.svg#icon-menu" /></svg>
                             <ul className={ (this.state.navIsOpen) ? "inbl-list menu active" : "inbl-list menu" }>
-                                <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/">Home</NavLink></li>
+                                <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/">Accueil</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active'  to="/filmographie">Filmographie</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/realisateur">Le réalisateur</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} key="contact" activeClassName='active' to="/realisateur#contact">Contact</NavLink></li>

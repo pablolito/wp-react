@@ -1,17 +1,21 @@
 import React from 'react';
 import { BannerPage } from '../shared/bannerPage.jsx';
+import { Api } from '../../api';
+import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils';
 import $ from 'jquery';
 
 export class Post extends React.Component {
     constructor(props){
         super(props);
+        this.api = new Api(utils.apiRoute);
         this.state = {
             data: null,
-            tagsData: null
+            tagsData: null,
+            isInError: false
         }
     }
-    getPostTagsList(articleId){
+    /*getPostTagsList(articleId){
         $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/tags?post="+articleId)
         .done(( json ) => {
             this.setState({
@@ -23,20 +27,13 @@ export class Post extends React.Component {
                 tagsData : json
             });
         });
-        
-    }
+    }*/
     getPost(articleId){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts/"+articleId)
-        .done(( json ) => {
+        this.api.getPost(articleId).then(json => {
             this.setState({
                 data : json
             });
-        })
-        .fail(( jqxhr, textStatus, error ) => {
-            this.setState({
-                data : error
-            });
-        });
+        }).catch((onreject) => { this.setState({isInError: true}) });
     }
     
     renderItemsList(data){
@@ -46,21 +43,19 @@ export class Post extends React.Component {
     
     componentDidMount(){
         this.getPost(this.props.match.params.id);
-        this.getPostTagsList(this.props.match.params.id);
+        //this.getPostTagsList(this.props.match.params.id);
     }
 
     render() {
         if(this.state.data == null){
-            return (<div className="loader-container">
-                <svg className="icon icon-loader"><use xlinkHref="/dist/images/sprite-icons.svg#icon-spinner4" /></svg>
-                </div>);
+            return (<Loader isInError={this.state.isInError} />);
         } 
         let embedVideo = $('<div/>').html(this.state.data.acf.contenu_video).text();
         embedVideo = <div dangerouslySetInnerHTML={{__html: embedVideo}}></div>;
 
         return (
             <div className="post">
-                <BannerPage title={this.state.data.title.rendered} description="" tagsList={this.state.tagsData} returnLink={true} />
+                <BannerPage title={this.state.data.title.rendered} description="" /*tagsList={this.state.tagsData}*/ returnLink={true} />
                 <div className="cnt-center">
                     <div className="row">
                         <div className="columns small-12 medium-7 large-7">
@@ -94,7 +89,6 @@ export class Post extends React.Component {
                                     ""
                                 }
                             </div>
-                            {/* {utils.htmlEntitiesDecode(this.state.data.acf.contenu_article)} */}
                             <div dangerouslySetInnerHTML={{__html: this.state.data.acf.contenu_article}}></div>
                         </div>
                     </div>

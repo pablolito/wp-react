@@ -28,11 +28,11 @@ export class Posts extends React.Component {
     }
 
     getPostsList(){
-        let postDataPromise = this.api.get("/wp-json/wp/v2/posts?categories=15");
-        postDataPromise.then(json => {
+        this.api.getAllPosts().then(json => {
             // get tags list 
             json.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
             this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
+            //console.log(this.tagsTab);
             this.getTagsList(this.tagsTab);
             // put json data in state
             this.setState({
@@ -40,12 +40,11 @@ export class Posts extends React.Component {
                 allTagsAreActive: true,
                 tagActiveIndex: -1
             });
-        }).catch((onreject) => {this.setState({isInError: true})});
+        }).catch((onreject) => { this.setState({isInError: true}) });
     }
 
     getFilteredPost(id, index){
-        let filteredPostPromise = this.api.get("/wp-json/wp/v2/posts?tags="+id);
-        filteredPostPromise.then(json => {
+        this.api.getPostsByTags(id).then(json => {
             this.setState({
                 data : json,
                 allTagsAreActive: false,
@@ -55,12 +54,11 @@ export class Posts extends React.Component {
     }
 
     getTagsList(idList){
-        let tagsListPromise = this.api.get("/wp-json/wp/v2/tags?include="+idList.toString());
-        tagsListPromise.then(json => {
+        this.api.getTagsList(idList.toString()).then(json => {
             this.setState({
                 tagsData : json
             });
-        }).catch((onreject) => {this.setState({isInError: true})});
+        }).catch((onreject) => { this.setState({isInError: true}) });
     }
 
     renderTagsList(item, index){
@@ -70,9 +68,6 @@ export class Posts extends React.Component {
 
     setMozaicHeight(){
         // calc mozaic height for flexbox column
-        /*let reactComp = ReactDOM.findDOMNode(this);
-        let imgGrp = reactComp.querySelector('.img-group');
-        console.log(imgGrp);*/
         let tab = [],
         mozaicHeight,
         imgGrpMaxHeight;
@@ -95,7 +90,7 @@ export class Posts extends React.Component {
     }
 
     render() {
-        if( /*(this.state.tagsData == null) ||*/ (this.state.data == null) ){
+        if( (this.state.data == null) ){
             return (<Loader isInError={this.state.isInError} />);
         }
         return (
@@ -116,9 +111,6 @@ export class Posts extends React.Component {
                         )}
                     </div>
                 </div>
-                {/* {
-                    (! utils.isSmallScreen()) ? this.setMozaicHeight() : ""
-                } */}
             </div>
             
         );

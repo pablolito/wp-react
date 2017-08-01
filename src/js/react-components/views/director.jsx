@@ -2,31 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { BannerPage } from '../shared/bannerPage.jsx';
+import { Api } from '../../api';
+import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils';
 import $ from 'jquery';
 
 export class Director extends React.Component {
     constructor(props){
         super(props);
+        this.api = new Api(utils.apiRoute);
         this.state = {
             data: null,
+            isInError: false
         }
     }
-    getPost(articleId){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/posts/269")
-        .done(( json ) => {
+    getPost(){
+        this.api.getDirectorPost().then(json => {
             this.setState({
                 data : json
             });
-        })
-        .fail(( jqxhr, textStatus, error ) => {
-            this.setState({
-                data : error
-            });
-        });
+        }).catch((onreject) => { this.setState({isInError: true}) });
     }
     
-  
     componentDidMount(){
         this.getPost();
     }
@@ -41,9 +38,7 @@ export class Director extends React.Component {
     }
     render() {
         if(this.state.data == null){
-            return (<div className="loader-container">
-                <svg className="icon icon-loader"><use xlinkHref="/dist/images/sprite-icons.svg#icon-spinner4" /></svg>
-                </div>);
+            return (<Loader isInError={this.state.isInError} />);
         } 
 
         return (
@@ -72,7 +67,6 @@ export class Director extends React.Component {
                                 <p>07 89 28 75 94</p>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
