@@ -94,6 +94,10 @@ header{
     width: 100%;
     border-bottom: 1px solid #d4d4d4;
     background-color: #FFF;
+    .icon-rs{
+        display: inline-block;
+        fill: #FFF;
+    }
     .logo{
         //border: 1px dashed #000;
         text-align: left;
@@ -253,9 +257,6 @@ footer{
         z-index: 100;
         background-color: $nav-background;
         border: none;
-        .icon-rs{
-            fill: #FFF;
-        }
         .logo{
             h1{
                 color: #FFF;
