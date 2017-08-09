@@ -11,6 +11,24 @@ let utils = {
         }else{
             return true;
         }
+    },
+    isMediumScreen: () => {
+        if (window.matchMedia("(min-width: 990px").matches){
+            return false;
+        }else{
+            return true;
+        }
+    },
+    footerFixed: () => {
+        let windowHeight = window.innerHeight,
+        containerElement = document.querySelector(".global-container"),
+        footerElement = document.querySelector("footer"),
+        footerHeight;
+        if(containerElement && footerElement){
+            footerHeight = footerElement.clientHeight;
+            containerElement.style.minHeight = windowHeight+"px";
+            containerElement.style.paddingBottom = footerHeight+"px";
+        }
     }
 }
 

@@ -53,13 +53,17 @@ export class SliderHome extends React.Component {
   
  
   render() {
+    //console.log("render");
     let settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 2000,
+      autoplay: false,
       fade: true,
       draggable: false,
-      swipe: false
+      swipe: false,
+      autoplaySpeed: 6000,
+      pauseOnHover: true
     };
 
     return (

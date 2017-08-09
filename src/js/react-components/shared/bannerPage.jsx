@@ -18,7 +18,7 @@ export class BannerPage extends React.Component {
                 <div className="filter-cover">
                     <div className="text-center">
                         <h1>{titleDecode}</h1>
-                        <p><strong>{descriptionDecode}</strong></p>
+                        {(this.props.description) ? <p><strong>{descriptionDecode}</strong></p> : ""}
                         {(this.props.tagsList) ? <ul className="inbl-list tags-list">{this.props.tagsList.map((v,i) => this.renderTagsList(v,i))}</ul> : ""}
                         {(this.props.returnLink) ? <Link className="link" to={"/filmographie"}>Retour à toute la filmographie </Link> : ""}
                     </div>

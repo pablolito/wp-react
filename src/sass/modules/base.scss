@@ -22,6 +22,9 @@ body, html{
         overflow: hidden;
     }
 }
+body{
+    background: #F8F8FF;
+}
 a{
     text-decoration: none;
 }
@@ -49,13 +52,17 @@ svg[class^="icon"]{
 .mt2{
     margin-top: 2rem;
 }
+.mb2{
+    margin-bottom: 2rem;
+}
 
 .close{
-    font-size: 2rem;
+    font-size: 2.5rem;
     position: absolute;
     right: 1rem;
     top: 1rem;
     cursor: pointer;
+    color: #FFF;
 }
 
 .icon-play{
@@ -76,10 +83,17 @@ svg[class^="icon"]{
         color: #FFF;
     }
 }
+.card{
+    color: #FFF;
+    background: #333;
+    display: inline-block;
+    padding: 1rem;
+}
 
 header{
     width: 100%;
     border-bottom: 1px solid #d4d4d4;
+    background-color: #FFF;
     .logo{
         //border: 1px dashed #000;
         text-align: left;
@@ -110,7 +124,7 @@ header{
             display: none;
             &.active{
                 position: fixed;
-                top: 92px;
+                top: 68px;
                 left: 0;
                 height: 100%;
                 width: 100%;
@@ -138,6 +152,7 @@ header{
                 padding: 0 1rem;
                 font-family: $secondary-font;
                 padding: 0 0.5rem;
+                font-size: 0.9rem;
                 &.active{
                     color: #000;
                 }
@@ -152,6 +167,22 @@ header{
         }
     }
 }
+.global-container{
+    position: relative;
+}
+footer{
+    padding: 2rem 0;
+    font-size: 1rem;
+    background-color: #FFF;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    a{
+        color: #000;
+        font-weight: bold;
+    }
+}
 
 .full-width {
    width: 100%;
@@ -163,13 +194,14 @@ header{
 .banner{
     background:  url('/dist/images/ban-categ.jpg') no-repeat 0 0;
     background-size: cover;
-    height: 150px;
+    background-attachment: fixed;
+    height: 100px;
     color: #FFF;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     .filter-cover{
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.4);
         width: 100%;
-        height: 150px;
+        height: 100px;
         > div{
             @include vertical-align(relative);
         }
@@ -177,7 +209,7 @@ header{
     h1{
         text-transform: uppercase;
         font-family: $secondary-font;
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     .link{
         color: #fff;
@@ -186,12 +218,28 @@ header{
         text-decoration: underline;
     }
 }
-.alternative-banner{
-    margin-top: 2rem;
-    background: rgba(120, 171, 70, 0.8);
-    color: #FFF;
-    padding: 2rem 0;
-    border-top: 1px dashed #FFF;
+.alternative-banner, .customer-banner{
+    color: #000;
+    padding: 3rem 0;
+    border-top: 1px dashed #000;
+    p:first-child{
+        font-size: 1rem;
+    }
+    h3{
+        text-align: center;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-family: "Open Sans", sans-serif;
+        margin-bottom: 2rem;
+    }
+}
+.customer-banner{
+    background: #333;
+    border-top: none;
+    text-align: center;
+    h3{
+        color: #FFF;
+    }
 }
 .home{
     background-color: #000;
@@ -205,6 +253,9 @@ header{
         z-index: 100;
         background-color: $nav-background;
         border: none;
+        .icon-rs{
+            fill: #FFF;
+        }
         .logo{
             h1{
                 color: #FFF;
@@ -232,22 +283,26 @@ header{
             color: #FFF;
         }
     }
+    footer{
+        visibility: hidden;
+    }
 }
 
 /* ui component */
 /* loader */
 .loader-container{
+    width: 100%;
+    text-align: center;
     @include vertical-align(absolute);
     z-index: 10;
-    width: 100%;
-    left: 0;
-    text-align: center;
     .error{
         font-size: 2rem;
     }
     .icon-loader{
         display: inline-block;
         animation: spin-loader 1s linear infinite;
+        width: 4rem;
+        height: 4rem;
     }
 }
 
@@ -312,7 +367,7 @@ header{
                     height: 20px;
                     border-radius: 20px;
                     background-color: #FFF;
-                    box-shadow: 1px 1px 5px 0px #656565;
+                    box-shadow: 0px 0px 2px 0px #fff;
                     font-size: 1rem;
                     opacity: 1;
                     content: '';
@@ -322,6 +377,7 @@ header{
             button{
                 &:before{
                     color: #FFF;
+                    background-color: #333;
                 }
             }
         }
@@ -350,7 +406,7 @@ header{
     position: absolute;
     left: 0;
     top: 0;
-    background: #FFF;
+    background: rgba(0, 0, 0, 0.9);
     width: 100%;
     height: 100%;
     z-index: 101;
@@ -382,24 +438,35 @@ header{
         nav{
             text-align: right;
             padding: 1rem 0;
-            .menu{
-                display: block;
-            }
             li{
                 font-size: 1rem;
+                &:last-child{
+                    a{
+                        padding-left: 0rem;
+                    }
+                }
                 a{
                     padding: 0 2rem;
+                    display: inline-block;
                 }
             }
         }
     }
     .banner{
-        height: 200px;
+        height: 150px;
         .filter-cover{
-            height: 200px;
+            height: 150px;
         }
         h1{
             font-size: 2rem;
+        }
+    }
+    .alternative-banner, .customer-banner{
+        h3{
+            font-size: 1.5rem;
+        }
+        p:first-child{
+            font-size: 1.2rem; 
         }
     }
     .slick-slider{
@@ -414,6 +481,15 @@ header{
                 .description{
                     font-size: 2rem;
                 }
+            }
+        }
+    }
+}
+@include breakpoint(large){
+    header{
+        nav{
+            .menu{
+                display: block;
             }
         }
     }

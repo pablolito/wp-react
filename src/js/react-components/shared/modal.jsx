@@ -13,7 +13,7 @@ export class Modal extends React.Component {
 
     render() {
         return (
-            <div className="modal align-middle align-center">
+            <div onClick={this.closeModal} className="modal align-middle align-center">
                 <span onClick={this.closeModal} className="close">X</span>
                 <div className="container"> 
                     {this.props.children}

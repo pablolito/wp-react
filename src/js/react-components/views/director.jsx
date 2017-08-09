@@ -43,8 +43,8 @@ export class Director extends React.Component {
 
         return (
             <div className="post">
-                <BannerPage title={this.state.data.title.rendered} description="Un mot sur moi et sur mon travail" />
-                <div className="cnt-center">
+                <BannerPage title={this.state.data.title.rendered} />
+                <div className="cnt-center mb2">
                     <div className="row">
                         <div className="columns small-12 medium-7 large-7">
                             <img src={this.state.data.acf.director_picture.url} />
@@ -54,23 +54,35 @@ export class Director extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="customer-banner">
+                    <h3 className="tex-center">Ils m'ont accordé leur confiance</h3>
+                    <div className="wrapper-customer-mozaic">
+                    <div className="customer-mozaic">
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2016/10/Logo_LPO38.png" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/picture.jpg" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/picture.jpg" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2016/10/Logo_LPO38.png" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/picture.jpg" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
+                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
+                    </div>
+                    </div>
+                </div>
                 <div ref="contact" className="alternative-banner">
                     <div className="cnt-center">
-                        <div className="row">
-                            <div className="columns small-12 medium-6 large-6">
-                                <div className="va-middle">
-                                    Vous souhaitez en savoir plus sur mes projets n'hésitez pas à me contacter.
-                                </div>
-                            </div>
-                            <div className="columns small-12 medium-6 large-6">
-                                <p><strong>axguier@hotmail.com</strong></p>
-                                <p>07 89 28 75 94</p>
+                        <h3 className="tex-center">Contact</h3>
+                        <div className="text-center">
+                            <p className="mb2">Vous souhaitez en savoir plus sur mes projets n'hésitez pas à me contacter.</p>
+                            <div className="card">
+                                <p><strong></strong></p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         );
 
     }

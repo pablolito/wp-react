@@ -5,7 +5,7 @@ import { PostItem } from '../shared/postItem.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
 import { Api } from '../../api';
 import { Loader } from '../shared/loader.jsx';
-import utils from '../../utils'; 
+import utils from '../../utils';
 import $ from 'jquery';
 export class Posts extends React.Component {
     constructor(props){
@@ -71,7 +71,7 @@ export class Posts extends React.Component {
         let tab = [],
         mozaicHeight,
         imgGrpMaxHeight;
-        let nbCol = Math.ceil(($('.img-group').length) / 2);
+        let nbCol = Math.ceil(($('.img-group').length) / 3);
         $('.img-group').each(function(){
             tab.push($(this).outerHeight());
         });
@@ -95,16 +95,16 @@ export class Posts extends React.Component {
         }
         return (
             <div className="posts">
-                <BannerPage title="Quelques Réalisations" description="Lorem ipsum" />
-                <div className="cnt-center mt2">
-                    {(this.state.tagsData) ?
+                <BannerPage title="Mes dernières réalisations" />
+                <div>
+                    {/*(this.state.tagsData) ?
                     <ul className="inbl-list text-center filter-menu">
                         <li>Thématiques : </li>
                         <li className={(this.state.allTagsAreActive) ? "active" : ""} onClick={()=>this.getPostsList()}><span>Toutes</span></li>
                         {this.state.tagsData.map((item, index) => this.renderTagsList(item, index))} 
                     </ul>
                     : ""
-                    }
+                    */}
                     <div className="mozaic">
                         {this.state.data.map(
                             (item, index) => <PostItem key={'post'+index} data={item} />
@@ -112,7 +112,6 @@ export class Posts extends React.Component {
                     </div>
                 </div>
             </div>
-            
         );
 
     }

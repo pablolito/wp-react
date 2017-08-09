@@ -9,7 +9,8 @@ export class Nav extends React.Component {
         this.state = ({navIsOpen : false});
     }
     toggleMenu(e){
-        if(utils.isSmallScreen()){
+        /* to do remove this !! */
+        if(utils.isMediumScreen()){
             this.setState({navIsOpen : !this.state.navIsOpen});
             if(! this.state.navIsOpen){
                 document.body.classList.add("no-scroll");
@@ -25,7 +26,7 @@ export class Nav extends React.Component {
                 <div className="row collapse full-width align-middle">
                     <div className="columns small-9 medium-6 large-3">
                         <div className="logo">
-                            <h1>Axel Falguier <span>Réalisateur environnement</span></h1>
+                            <h1>Axel Falguier réalisations</h1>
                         </div>
                     </div>
                     <div className="columns small-3 medium-6 large-9 text-right">
@@ -36,6 +37,8 @@ export class Nav extends React.Component {
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active'  to="/filmographie">Filmographie</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/realisateur">Le réalisateur</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} key="contact" activeClassName='active' to="/realisateur#contact">Contact</NavLink></li>
+                                <li><a title="Me suivre sur Facebook" target="_blank" href="https://www.facebook.com/AxelFalguierRealisateur/"><svg width="24" height="24" className="icon icon-rs"><use xlinkHref="dist/images/sprite-icons.svg#icon-facebook" /></svg></a></li>
+                                <li><a title="Me suivre sur Vimeo" target="_blank" href="https://vimeo.com/user46118544"><svg width="24" height="24" className="icon icon-rs"><use xlinkHref="dist/images/sprite-icons.svg#icon-vimeo" /></svg></a></li>
                             </ul>
                         </nav>
                     </div>
