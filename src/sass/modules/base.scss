@@ -441,11 +441,6 @@ footer{
             padding: 1rem 0;
             li{
                 font-size: 1rem;
-                &:last-child{
-                    a{
-                        padding-left: 0rem;
-                    }
-                }
                 a{
                     padding: 0 2rem;
                     display: inline-block;
@@ -489,8 +484,16 @@ footer{
 @include breakpoint(large){
     header{
         nav{
+            .icon-rs{
+                fill: #000;
+            }
             .menu{
                 display: block;
+                li:last-child{
+                    a:last-child{
+                        padding-left: 0;
+                    }
+                }
             }
         }
     }

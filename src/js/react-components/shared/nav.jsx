@@ -37,8 +37,14 @@ export class Nav extends React.Component {
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active'  to="/filmographie">Filmographie</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/realisateur">Le réalisateur</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} key="contact" activeClassName='active' to="/realisateur#contact">Contact</NavLink></li>
-                                <li><a title="Me suivre sur Facebook" target="_blank" href="https://www.facebook.com/AxelFalguierRealisateur/"><svg width="24" height="24" className="icon icon-rs"><use xlinkHref="dist/images/sprite-icons.svg#icon-facebook" /></svg></a></li>
-                                <li><a title="Me suivre sur Vimeo" target="_blank" href="https://vimeo.com/user46118544"><svg width="24" height="24" className="icon icon-rs"><use xlinkHref="dist/images/sprite-icons.svg#icon-vimeo" /></svg></a></li>
+                                <li>
+                                    <a title="Me suivre sur Facebook" target="_blank" href="https://www.facebook.com/AxelFalguierRealisateur/">
+                                        <svg width="24" height="24" className="icon icon-rs"><use xlinkHref="dist/images/sprite-icons.svg#icon-facebook" /></svg>
+                                    </a>
+                                    <a title="Me suivre sur Vimeo" target="_blank" href="https://vimeo.com/user46118544">
+                                        <svg width="24" height="24" className="icon icon-rs"><use xlinkHref="dist/images/sprite-icons.svg#icon-vimeo" /></svg>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
