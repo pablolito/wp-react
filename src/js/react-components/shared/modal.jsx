@@ -8,7 +8,7 @@ export class Modal extends React.Component {
     }
 
     closeModal(){
-        this.props.openModalCallback();
+        this.props.toggleModalCallback();
     }
 
     render() {

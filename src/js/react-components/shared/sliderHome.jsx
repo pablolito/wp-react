@@ -31,7 +31,7 @@ export class SliderHome extends React.Component {
       };
       let htmlContent = <div key={itemKey} className="item" style={itemSrc}>
           {(itemValue.acf.contenu_video!=="") ?
-          <svg onClick={()=>this.toggleModal(itemKey)} className="icon icon-play"><use xlinkHref="dist/images/sprite-icons.svg#icon-play2" /></svg>
+          <svg onClick={(e)=>{this.toggleModal(itemKey)}} className="icon icon-play"><use xlinkHref="dist/images/sprite-icons.svg#icon-play2" /></svg>
           : null}
           <div className={(itemValue.categories[0]=="16") ? "caption intro" : "caption"}>
             <p dangerouslySetInnerHTML={{__html: itemValue.title.rendered}}></p>
@@ -46,8 +46,10 @@ export class SliderHome extends React.Component {
   }
 
   renderSlideData(){
-    let sortSildeData = this.data.sort(function(a,b) {return (a.slug === 'presentation' ? 1 : (a.categories[0] < b.categories[0]) ? 1 : ((b.categories[0] < a.categories[0]) ? -1 : 0) )});
-    let result = sortSildeData.map( (v, i) => ((v && i <= 3) ? this.renderItem(v, i) : null) );
+    //console.log(this.data);
+    let sortSlideData = this.data.sort(function(a,b) {return (a.slug === 'presentation' ? 1 : (a.categories[0] < b.categories[0]) ? 1 : ((b.categories[0] < a.categories[0]) ? -1 : 0) )});
+    let result = sortSlideData.map( (v, i) => ((v && i <= 3) ? this.renderItem(v, i) : null) );
+    //console.log(result);
     return result;
   }
   
@@ -58,24 +60,30 @@ export class SliderHome extends React.Component {
       dots: true,
       infinite: true,
       speed: 2000,
-      autoplay: false,
+      autoplay: true,
       fade: true,
       draggable: false,
       swipe: false,
       autoplaySpeed: 6000,
-      pauseOnHover: true
+      pauseOnHover: false
     };
 
     return (
       <div>
         {(this.state.openModal) ?
-        <Modal openModalCallback={this.toggleModal}>
+        <Modal toggleModalCallback={this.toggleModal}>
           {this.renderMovie(this.state.movieIndex)}
         </Modal>
         : null}
         <Slider {...settings}>
-           {this.renderSlideData()}
-        </Slider>
+            {this.renderSlideData()}
+          </Slider>
+        {/* {(this.renderSlideData().length > 0) ?
+          <Slider {...settings}>
+            {this.renderSlideData()}
+          </Slider>
+          : null
+        } */}
       </div>
     );
   }
