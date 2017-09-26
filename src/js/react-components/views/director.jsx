@@ -76,8 +76,7 @@ export class Director extends React.Component {
                         <div className="text-center">
                             <p className="mb2">Vous souhaitez en savoir plus sur mes projets n'hésitez pas à me contacter.</p>
                             <div className="card">
-                                <p><strong>axelfalguier@hotmail.com</strong></p>
-                                <p>07 85 28 94 94</p>
+                                
                             </div>
                         </div>
                     </div>
