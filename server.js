@@ -1,18 +1,14 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 // Since the root/ dir contains our index.html
 app.use(express.static(__dirname + '/'));
 
-app.use(function(req, res, next){
-  res.status(404);
 
-  // home redirect
-  if (req.accepts('html')) {
-    res.render('404', res.redirect("/"));
-    return;
-  }
-
+// Always return the main index.html, so react-router render the route in the client
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 // Heroku bydefault set an ENV variable called PORT=443
