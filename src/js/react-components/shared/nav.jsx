@@ -24,12 +24,12 @@ export class Nav extends React.Component {
         return (
             <header>
                 <div className="row collapse full-width align-middle">
-                    <div className="columns small-9 medium-6 large-4">
+                    <div className="columns small-10 medium-6 large-4">
                         <div className="logo">
-                            <h1>Axel Falguier réalisations</h1>
+                            <h1>Axel Falguier réalisation</h1>
                         </div>
                     </div>
-                    <div className="columns small-3 medium-6 large-8 text-right">
+                    <div className="columns small-2 medium-6 large-8 text-right">
                         <nav>
                             <svg onClick={this.toggleMenu} width="24" height="24" className="icon icon-menu hide-for-large"><use xlinkHref="dist/images/sprite-icons.svg#icon-menu" /></svg>
                             <ul className={ (this.state.navIsOpen) ? "inbl-list menu active" : "inbl-list menu" }>

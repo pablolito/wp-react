@@ -24,6 +24,7 @@ body, html{
 }
 body{
     background: #F8F8FF;
+    padding-top: 70px;
 }
 a{
     text-decoration: none;
@@ -94,6 +95,10 @@ header{
     width: 100%;
     border-bottom: 1px solid #d4d4d4;
     background-color: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
     .icon-rs{
         display: inline-block;
         fill: #FFF;
@@ -132,7 +137,7 @@ header{
                 left: 0;
                 height: 100%;
                 width: 100%;
-                background-color: $nav-background;
+                background-color: rgba(0, 0, 0, 0.9);
                 display: block;
                 z-index: 2000;
                 padding: 1rem;
@@ -250,6 +255,7 @@ footer{
 }
 .home{
     background-color: #000;
+    padding-top: 0;
     .icon-loader{
         fill: #FFF;
     }
@@ -429,11 +435,15 @@ footer{
 
 
 @include breakpoint(medium){
+    body{
+        padding-top: 0;
+    }
     .icon-play{
         width: 10rem;
         height: 10rem;
     }
     header{
+        position: static;
         .logo{
             h1{
                 text-align: left;
