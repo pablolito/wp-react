@@ -60,7 +60,7 @@ export class SliderHome extends React.Component {
       dots: true,
       infinite: true,
       speed: 2000,
-      autoplay: true,
+      autoplay: false,
       fade: true,
       draggable: false,
       swipe: false,
@@ -78,12 +78,6 @@ export class SliderHome extends React.Component {
         <Slider {...settings}>
             {this.renderSlideData()}
           </Slider>
-        {/* {(this.renderSlideData().length > 0) ?
-          <Slider {...settings}>
-            {this.renderSlideData()}
-          </Slider>
-          : null
-        } */}
       </div>
     );
   }

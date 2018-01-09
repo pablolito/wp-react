@@ -56,22 +56,32 @@
             color: #FFF;
             // background: rgba(255, 119, 51, 0.8);
             background: rgba(0, 0, 0, 0.8);
-            padding: 10px;
+            padding: 0 10px 10px 10px;
             transition: all 0.5s ease-in;
             > div{
                 text-align: center;
                 width: 100%;
                 //@include vertical-align(relative);
                 h2{
-                    margin-bottom: 1rem;
+                    margin-bottom: 0.5rem;
                     font-size: 18px;
                     font-weight: normal;
+                    display: table;
+                    text-align: center;
+                    width: 100%;
+                    span{
+                        display: table-cell;
+                        height: 50px;
+                        line-height: 20px;
+                        vertical-align: middle;
+                    }
+                    
                 }
                 p{
                     margin-bottom: 0.5rem;
                 }
                 .button{
-                    margin-top: 1rem;
+                    margin: 0.5rem 0 0 0;
                     background-color: #FFF;
                     a{
                         color: #000;

@@ -28,6 +28,7 @@ body{
 }
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 /* genric class */
@@ -109,9 +110,15 @@ header{
         padding: 1rem;
         h1{
             font-size: 1.5rem;
-            font-family: $tertiary-font;
+            font-family: $secondary-font;
             font-weight: normal;
             color: #000;
+            strong{
+                display: block;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+                font-family: Helvetica, Arial, sans-serif;
+            }
             span{
                 display: block;
                 font-size: 1rem;
@@ -157,19 +164,25 @@ header{
             a{
                 color: #888;
                 text-decoration: none;
-                text-transform: uppercase;
                 padding: 0 1rem;
                 font-family: $secondary-font;
                 padding: 0 0.5rem;
                 font-size: 0.9rem;
-                &.active{
+                transition: color 0.3s ease-in;
+                &.active, &:hover{
                     color: #000;
+                    font-weight: bold;
                 }
             }
             &:first-child{
                 a{
                     &.active{
                         color: #888;
+                        font-weight: normal;
+                    }
+                    &:hover{
+                        font-weight: bold;
+                        color: #000;
                     }
                 }
             }
@@ -278,11 +291,17 @@ footer{
             }
             a{
                 color: $nav-color;
+                transition: bold 0.3s ease-in;
+                &:hover{
+                    color: $nav-color;
+                    font-weight: bold;
+                }
             }
             li{
                 &:first-child{
                     a.active{
                         color: $nav-color;
+                        font-weight: bold;
                     }
                 }
             }
@@ -329,7 +348,7 @@ footer{
         padding: 1rem;
         position: absolute;
         right: 10%;
-        bottom: 20%;
+        bottom: 10%;
         max-width: 20rem;
         font-family: $secondary-font;
         font-size: 1rem;
@@ -443,7 +462,7 @@ footer{
         height: 10rem;
     }
     header{
-        position: static;
+        //position: static;
         .logo{
             h1{
                 text-align: left;
@@ -480,7 +499,8 @@ footer{
     }
     .slick-slider{
         .caption{
-            font-size: 2rem;
+            font-size: 1.7rem;
+            max-width: 320px;
             .button{
                 font-size: 1rem;
             }

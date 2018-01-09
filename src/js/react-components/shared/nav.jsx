@@ -26,7 +26,7 @@ export class Nav extends React.Component {
                 <div className="row collapse full-width align-middle">
                     <div className="columns small-10 medium-6 large-4">
                         <div className="logo">
-                            <h1>Axel Falguier réalisation</h1>
+                            <h1><a href="/">Axel Falguier <strong>Réalisateur et photographe</strong></a></h1>
                         </div>
                     </div>
                     <div className="columns small-2 medium-6 large-8 text-right">
@@ -35,7 +35,7 @@ export class Nav extends React.Component {
                             <ul className={ (this.state.navIsOpen) ? "inbl-list menu active" : "inbl-list menu" }>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/">Accueil</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active'  to="/filmographie">Filmographie</NavLink></li>
-                                <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/realisateur">Le réalisateur</NavLink></li>
+                                <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/realisateur">Bio</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} key="contact" activeClassName='active' to="/realisateur#contact">Contact</NavLink></li>
                                 <li className="rs">
                                     <a title="Me suivre sur Facebook" target="_blank" href="https://www.facebook.com/AxelFalguierRealisateur/">
