@@ -10,7 +10,7 @@ export class Footer extends React.Component {
     render() {
         return (
             <footer>
-                <div className="text-center">Axel Falguier réalisation {this.date.getFullYear()} - Conception : <a target="_blank" href="https://github.com/pablolito/wp-react">pablolito</a></div>
+                <div className="text-center">Axel Falguier &copy; {this.date.getFullYear()} All rights reserved - Conception : <a target="_blank" href="https://github.com/pablolito/wp-react">pablolito</a></div>
             </footer>
         );
 

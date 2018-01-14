@@ -35,7 +35,7 @@ export class Nav extends React.Component {
                             <ul className={ (this.state.navIsOpen) ? "inbl-list menu active" : "inbl-list menu" }>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/">Accueil</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} activeClassName='active'  to="/filmographie">Filmographie</NavLink></li>
-                                <li><NavLink onClick={this.toggleMenu} activeClassName='active' to="/realisateur">Bio</NavLink></li>
+                                <li><NavLink onClick={this.toggleMenu}  activeClassName='active' to="/realisateur">A propos</NavLink></li>
                                 <li><NavLink onClick={this.toggleMenu} key="contact" activeClassName='active' to="/realisateur#contact">Contact</NavLink></li>
                                 <li className="rs">
                                     <a title="Me suivre sur Facebook" target="_blank" href="https://www.facebook.com/AxelFalguierRealisateur/">

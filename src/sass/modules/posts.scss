@@ -1,6 +1,6 @@
 .posts{
     padding: 0 0 3rem 0;
-    background: #F8F8FF;
+    //background: #F8F8FF;
     iframe{
         width: 100%;
     }
@@ -30,10 +30,11 @@
     }
     .mozaic{
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: row wrap;
         justify-content: flex-start;
         align-items: center;
         overflow: hidden;
+        padding: 3px;
     }
     .img-group{
         width: 100%;
@@ -41,6 +42,7 @@
         border: 3px solid #FFF;
         transition: all 0.5s ease;
         overflow: hidden;
+        margin-bottom: 1rem;
         > div{
             position: relative;
         }
@@ -56,8 +58,8 @@
             color: #FFF;
             // background: rgba(255, 119, 51, 0.8);
             background: rgba(0, 0, 0, 0.8);
-            padding: 0 10px 10px 10px;
-            transition: all 0.5s ease-in;
+            padding: 0 15px 15px 15px;
+            transition: all 0.2s ease-in;
             > div{
                 text-align: center;
                 width: 100%;
@@ -96,6 +98,12 @@
                 top: 0;
                 > div{
                     @include vertical-align(relative);
+                    h2{
+                        font-size: 20px;
+                        span{
+                            height: auto;
+                        }
+                    }
                 }
             }
         }
@@ -103,6 +111,39 @@
 }
 .post{
     padding-bottom: 3rem;
+    .other{
+        border-top: 1px dashed #ccc;
+        padding-top: 1rem;
+        h3{
+            padding-bottom: 1rem;
+            font-family: "Open Sans", sans-serif;
+            font-weight: normal;
+        }
+        .info{
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+    .director {
+        padding: 1rem;
+        p{
+            margin-bottom: 0.5rem;
+            color: #333;
+            a{
+                font-weight: bold;
+                color: #000;
+            }
+        }
+        .bio{
+            .img{
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            .desc{
+                text-align: justify;
+            }
+        }
+    }
     img{
         margin-bottom: 1rem;
     }
@@ -110,13 +151,10 @@
         width: 100%;
         margin-bottom: 1rem;
     }
-    .project-info{
-        border: 1px dashed #000;
+    .info{
+        background-color: #f6f6f6;
         padding: 1rem;
         margin-bottom: 1rem;
-        li{
-            margin-right: 0.5rem;
-        }
     }
     .tags-list{
         margin-top: 0.5rem;
@@ -143,16 +181,21 @@
         justify-content: flex-start;
         align-items: center;
         font-size: 0;
-        max-height: 300px;
-        a{
-            width: 50%;
+        max-height: 10000px;
+        div{
+            width: 100%;
             border: 5px solid transparent;
+            a{
+                background: #FFF;
+                display: block;
+                padding: 1rem;
+            }
         }
         img{
             display: block;
             margin: 0;
             width: auto;
-            max-width: 100%;
+            width: 100%;
         }
     }
 }
@@ -171,6 +214,7 @@
         }
         .img-group{
             width: 33.33%;
+            margin-bottom: 0;
         }
     }
     .filter-menu{
@@ -182,11 +226,26 @@
         iframe{
             margin-bottom: 0;
         }
+        .director{
+            padding: 1rem;
+            .bio{
+                .img{
+                    width: 50%;
+                    float: left;
+                    padding-right: 2rem;
+                    margin-bottom: 0;
+                }
+                .desc{
+                    text-align: justify;
+                }
+            }
+        }
+        
         .customer-mozaic{
             max-height: 600px;
             overflow: hidden;
-            a{
-                width: 25%;
+            div{
+                width: 20%;
             }
         }
     }

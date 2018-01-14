@@ -7,7 +7,6 @@ export class PostItem extends React.Component {
     }
     render() {
         let data = this.props.data;
-
         let imageGroup = <div><img src={data.acf.upload_photo_slider.sizes.medium_large} />
                 <caption>
                     <div>

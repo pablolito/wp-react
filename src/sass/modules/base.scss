@@ -23,8 +23,8 @@ body, html{
     }
 }
 body{
-    background: #F8F8FF;
-    padding-top: 70px;
+    /*background: #F8F8FF;*/
+    padding-top: 90px;
 }
 a{
     text-decoration: none;
@@ -53,6 +53,9 @@ svg[class^="icon"]{
 
 .mt2{
     margin-top: 2rem;
+}
+.mb05{
+    margin-bottom: 0.5rem;
 }
 .mb2{
     margin-bottom: 2rem;
@@ -141,7 +144,7 @@ header{
             display: none;
             &.active{
                 position: fixed;
-                top: 68px;
+                top: 89px;
                 left: 0;
                 height: 100%;
                 width: 100%;
@@ -168,7 +171,7 @@ header{
                 padding: 0 1rem;
                 font-family: $secondary-font;
                 padding: 0 0.5rem;
-                font-size: 0.9rem;
+                font-size: 1rem;
                 transition: color 0.3s ease-in;
                 &.active, &:hover{
                     color: #000;
@@ -197,9 +200,9 @@ header{
     position: relative;
 }
 footer{
-    padding: 2rem 0;
+    padding: 1rem 0;
     font-size: 1rem;
-    background-color: #FFF;
+    background-color: #f4f4f4;
     border-top: 1px solid #ccc;
     position: absolute;
     bottom: 0;
@@ -218,27 +221,33 @@ footer{
 }
 
 .banner{
-    background:  url('/dist/images/ban-categ.jpg') no-repeat 0 0;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100px;
-    color: #FFF;
-    margin-bottom: 3rem;
-    .filter-cover{
-        background-color: rgba(0, 0, 0, 0.4);
-        width: 100%;
-        height: 100px;
-        > div{
-            @include vertical-align(relative);
-        }
-    }
+    // background:  url('/dist/images/ban-categ.jpg') no-repeat 0 0;
+    // background-size: cover;
+    // background-attachment: fixed;
+    // height: 100px;
+    // color: #FFF;
+    // margin-bottom: 3rem;
+    // .filter-cover{
+    //     background-color: rgba(0, 0, 0, 0.4);
+    //     width: 100%;
+    //     height: 100px;
+    //     > div{
+    //         @include vertical-align(relative);
+    //     }
+    // }
+    padding: 2rem;
+    text-align: center;
     h1{
         text-transform: uppercase;
         font-family: $secondary-font;
         font-size: 1rem;
+        //border-bottom: 1px solid #f1f1f1;
+        //padding-bottom: 0.5rem;
+        font-weight: normal;
+        display: inline-block;
     }
     .link{
-        color: #fff;
+        color: #000;
         margin-top: 1rem;
         display: inline-block;
         text-decoration: underline;
@@ -337,6 +346,11 @@ footer{
 }
 
 @keyframes spin-loader { 100% { transform:rotate(360deg); } }
+@keyframes fade-in {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 
 /* slick */
 .slick-slider{
@@ -344,18 +358,25 @@ footer{
     height: 100%;
     position: absolute;
     z-index: 1;
+    .slick-active{
+        .caption.intro{
+            opacity: 1;
+        }
+    }
     .caption{
         background-color: rgba(255,255,255, 0.6);
         padding: 1rem;
         position: absolute;
         right: 10%;
-        bottom: 10%;
-        max-width: 20rem;
+        bottom: 15%;
+        width: 80%;
         font-family: $secondary-font;
         font-size: 1rem;
         z-index: 3;
+        text-align: center;
         .button{
             margin-top: 1rem;
+            margin-bottom: 0;
         }
         &.intro{
             top: 50%;
@@ -366,10 +387,12 @@ footer{
             position: relative;
             background: none;
             font-size: 1.8rem;
+            line-height: 2rem;
             color: #FFF;
             width: 70%;
             text-align: center;
             max-width: none;
+            animation: fade-in 3s;
             .description{
                 font-size: 1.2rem;
                 margin-top: 1rem;
@@ -389,7 +412,7 @@ footer{
         position: relative;
     }
     .slick-dots{
-        bottom: 10%;
+        bottom: 5%;
         z-index: 20;
         button{
                 &:before{
@@ -455,9 +478,6 @@ footer{
 
 
 @include breakpoint(medium){
-    body{
-        padding-top: 0;
-    }
     .icon-play{
         width: 10rem;
         height: 10rem;
@@ -482,10 +502,10 @@ footer{
         }
     }
     .banner{
-        height: 150px;
-        .filter-cover{
-            height: 150px;
-        }
+        // height: 150px;
+        // .filter-cover{
+        //     height: 150px;
+        // }
         h1{
             font-size: 2rem;
         }
@@ -501,13 +521,17 @@ footer{
     .slick-slider{
         .caption{
             font-size: 1.7rem;
+            line-height: 2rem;
             max-width: 320px;
+            width: auto;
+            text-align: right;
             .button{
                 font-size: 1rem;
             }
             &.intro{
                 font-size: 4rem;
-                width: 90%;
+                line-height: 4rem;
+                width: 70%;
                 .description{
                     font-size: 2rem;
                 }

@@ -66,33 +66,18 @@ export class Posts extends React.Component {
         return itemList;
     }
 
-    setMozaicHeight(){
-        // calc mozaic height for flexbox column
-        let tab = [],
-        mozaicHeight,
-        imgGrpMaxHeight;
-        let nbCol = Math.ceil(($('.img-group').length) / 3);
-        $('.img-group').each(function(){
-            tab.push($(this).outerHeight());
-        });
-        imgGrpMaxHeight = tab.sort(function(a,b){ return (a - b); }).pop();
-        mozaicHeight = imgGrpMaxHeight*nbCol;
-        $(".mozaic").css({'max-height': mozaicHeight});
-    }
-
     componentDidMount(){
+        window.scrollTo(0, 0);
         this.getPostsList();
     }
-    componentDidUpdate(){
-        if(! utils.isSmallScreen()){
-            this.setMozaicHeight();
-        }
-    }
+
 
     render() {
         if( (this.state.data == null) ){
             return (<Loader isInError={this.state.isInError} />);
         }
+        let sortDataByPush = this.state.data.sort(function(a,b) {return (a.acf.push_home > b.acf.push_home) ? -1 : ((b.acf.push_home > a.acf.push_home) ? 1 : 0);} );
+        //console.log(sortDataByPush);
         return (
             <div className="posts">
                 <BannerPage title="Mes dernières réalisations" />
@@ -106,7 +91,7 @@ export class Posts extends React.Component {
                     : ""
                     */}
                     <div className="mozaic">
-                        {this.state.data.map(
+                        {sortDataByPush.map(
                             (item, index) => <PostItem key={'post'+index} data={item} />
                         )}
                     </div>

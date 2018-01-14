@@ -8,7 +8,7 @@ import utils from '../../utils';
 import $ from 'jquery';
 
 export class Director extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.api = new Api(utils.apiRoute);
         this.state = {
@@ -16,15 +16,16 @@ export class Director extends React.Component {
             isInError: false
         }
     }
-    getPost(){
+    getPost() {
         this.api.getDirectorPost().then(json => {
             this.setState({
-                data : json
+                data: json
             });
-        }).catch((onreject) => { this.setState({isInError: true}) });
+        }).catch((onreject) => { this.setState({ isInError: true }) });
     }
-    
-    componentDidMount(){
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
         this.getPost();
     }
     componentDidUpdate() {
@@ -37,37 +38,49 @@ export class Director extends React.Component {
         }
     }
     render() {
-        if(this.state.data == null){
+        if (this.state.data == null) {
             return (<Loader isInError={this.state.isInError} />);
-        } 
-
+        }
+        console.log(this.state.data.acf);
         return (
             <div className="post">
                 <BannerPage title={this.state.data.title.rendered} />
-                <div className="cnt-center mb2">
-                    <div className="row">
-                        <div className="columns small-12 medium-7 large-7">
-                            <img src={this.state.data.acf.director_picture.url} />
+                <div className="cnt-center mb2 director">
+                        <div className="clearfix bio">
+                            <div className="img">
+                                <img src={this.state.data.acf.director_picture.url} />
+                            </div>
+                            <div className="desc" dangerouslySetInnerHTML={{ __html: this.state.data.acf.director_description}}></div>
                         </div>
-                        <div className="columns small-12 medium-5 large-5">
-                            <div dangerouslySetInnerHTML={{__html: this.state.data.acf.director_description}}></div>
+                   
+                    {(this.state.data.acf.technical_picture.url && this.state.data.acf.technical_description) ?
+                    <div className="row mt2">
+                        <div style={{paddingLeft: 0}} className="columns small-12 medium-6 large-6">
+                            <div dangerouslySetInnerHTML={{ __html: this.state.data.acf.technical_description }}></div>
+                        </div>
+                        <div style={{paddingRight: 0}} className="columns small-12 medium-6 large-6">
+                            <img src={this.state.data.acf.technical_picture.url} />
                         </div>
                     </div>
+                    : null
+                    }
                 </div>
                 <div className="customer-banner">
                     <h3 className="tex-center">Ils m'ont accordé leur confiance</h3>
                     <div className="wrapper-customer-mozaic">
-                    <div className="customer-mozaic">
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2016/10/Logo_LPO38.png" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/picture.jpg" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/picture.jpg" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2016/10/Logo_LPO38.png" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/picture.jpg" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
-                        <a href="#"><img src="http://axelfalguier.com/wp-content/uploads/2017/08/fne-logo-2016-cover-1.jpg" /></a>
-                    </div>
+                        <div className="customer-mozaic">
+                            <div><a href="#"><img src="../../dist/images/logos/parc-naturel-regional-du-vercors.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-grandangle-800x800.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-projet-parc-haut-jura.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-LPO38.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-frapna.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/federation-leo-lagrange.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-CApluriel-OCCITANIE-Q.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/CM-logo-quadri.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/gentiana-cbna600px.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/Logo-ADA-Occitanie.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-FDC.jpg" /></a></div>
+                        </div>
                     </div>
                 </div>
                 <div ref="contact" className="alternative-banner">

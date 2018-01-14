@@ -20,7 +20,7 @@ let utils = {
         }
     },
     footerFixed: () => {
-        let windowHeight = window.innerHeight,
+        let windowHeight = window.innerHeight-89,
         containerElement = document.querySelector(".global-container"),
         footerElement = document.querySelector("footer"),
         footerHeight;
