@@ -44,6 +44,7 @@ export class Post extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         this.getPost(this.props.match.params.id);
+        utils.footerFixed();
         //this.getPostTagsList(this.props.match.params.id);
     }
 

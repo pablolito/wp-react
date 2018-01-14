@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 let utils = {
     apiRoute: "http://axelfalguier.com",
     htmlEntitiesDecode: (content) => {
@@ -20,10 +22,12 @@ let utils = {
         }
     },
     footerFixed: () => {
-        let windowHeight = window.innerHeight-89,
+        let windowHeight = window.innerHeight,
+        isHome = $("body").hasClass("home"),
         containerElement = document.querySelector(".global-container"),
         footerElement = document.querySelector("footer"),
         footerHeight;
+        windowHeight = (isHome ? windowHeight: windowHeight-89);
         if(containerElement && footerElement){
             footerHeight = footerElement.clientHeight;
             containerElement.style.minHeight = windowHeight+"px";
