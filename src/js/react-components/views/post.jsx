@@ -15,19 +15,7 @@ export class Post extends React.Component {
             isInError: false
         }
     }
-    /*getPostTagsList(articleId){
-        $.getJSON( "http://axelfalguier.com/wp-json/wp/v2/tags?post="+articleId)
-        .done(( json ) => {
-            this.setState({
-                tagsData : json
-            });
-        })
-        .fail(( jqxhr, textStatus, error ) => {
-            this.setState({
-                tagsData : json
-            });
-        });
-    }*/
+   
     getPost(articleId) {
         this.api.getPost(articleId).then(json => {
             this.setState({

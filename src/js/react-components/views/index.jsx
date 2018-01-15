@@ -19,6 +19,7 @@ export class Home extends React.Component {
         this.api.getAllPostsHome().then(json => {
             this.setState({data: json});
         }).catch((onreject) => { this.setState({isInError: true}) });
+        utils.footerFixed();
     }
 
     componentWillMount() {
