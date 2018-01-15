@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Slider from 'react-slick';
 import {Modal} from './modal.jsx';
 import { Link } from 'react-router-dom';
+import utils from '../../utils';
 
 export class SliderHome extends React.Component {
   constructor(props){
@@ -58,7 +59,7 @@ export class SliderHome extends React.Component {
     let settings = {
       dots: true,
       infinite: true,
-      speed: 2000,
+      speed: 1000,
       autoplay: false,
       fade: true,
       draggable: false,
@@ -66,6 +67,13 @@ export class SliderHome extends React.Component {
       autoplaySpeed: 6000,
       pauseOnHover: false
     };
+    if (utils.isSmallScreen()){
+      // redefine param config for mobile
+      settings.speed = 100;
+      settings.swipe = true;
+      settings.fade = false;
+      settings.autoplay = false;
+    }
 
     return (
       <div>
