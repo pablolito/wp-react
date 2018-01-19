@@ -6,7 +6,6 @@ import { BannerPage } from '../shared/bannerPage.jsx';
 import { Api } from '../../api';
 import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils';
-import $ from 'jquery';
 export class Posts extends React.Component {
     constructor(props){
         super(props);
@@ -30,13 +29,13 @@ export class Posts extends React.Component {
     getPostsList(){
         this.api.getAllPosts().then(json => {
             // get tags list 
-            json.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
+            json.data.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
             this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
             //console.log(this.tagsTab);
             this.getTagsList(this.tagsTab);
             // put json data in state
             this.setState({
-                data : json,
+                data : json.data,
                 allTagsAreActive: true,
                 tagActiveIndex: -1
             });
@@ -46,7 +45,7 @@ export class Posts extends React.Component {
     getFilteredPost(id, index){
         this.api.getPostsByTags(id).then(json => {
             this.setState({
-                data : json,
+                data : json.data,
                 allTagsAreActive: false,
                 tagActiveIndex: index
             });
@@ -56,7 +55,7 @@ export class Posts extends React.Component {
     getTagsList(idList){
         this.api.getTagsList(idList.toString()).then(json => {
             this.setState({
-                tagsData : json
+                tagsData : json.data
             });
         }).catch((onreject) => { this.setState({isInError: true}) });
     }

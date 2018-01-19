@@ -1,6 +1,5 @@
 import React from 'react'
-import $ from 'jquery';
-import {SliderHome} from '../shared/sliderHome.jsx';
+import { SliderHome } from '../shared/sliderHome.jsx';
 import { Api } from '../../api';
 import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils'; 
@@ -16,8 +15,8 @@ export class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.api.getAllPostsHome().then(json => {
-            this.setState({data: json});
+        this.api.getAllPostsHome().then((json) => {
+            this.setState({data: json.data});
         }).catch((onreject) => { this.setState({isInError: true}) });
         utils.footerFixed();
     }

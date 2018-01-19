@@ -351,6 +351,14 @@ footer{
     100% { opacity: 1; }
 }
 
+/* transition */
+.fade-appear{
+    opacity: 0.01;
+}
+.fade-appear.fade-appear-active{
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
 
 /* slick */
 .slick-slider{

@@ -19,7 +19,7 @@ export class Post extends React.Component {
     getPost(articleId) {
         this.api.getPost(articleId).then(json => {
             this.setState({
-                data: json
+                data: json.data
             });
         }).catch((onreject) => { this.setState({ isInError: true }) });
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery';
 import Slider from 'react-slick';
-import {Modal} from './modal.jsx';
+import { Modal } from './modal.jsx';
 import { Link } from 'react-router-dom';
 import utils from '../../utils';
 

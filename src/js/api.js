@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import axios from 'axios';
 
 export class Api{
     constructor(hostUrl){
@@ -24,22 +24,7 @@ export class Api{
     }
 
     get(url){
-        return new Promise ((resolve, reject) => {
-        $.ajax({
-            type: 'get',
-            url: this.hostUrl+url,
-            dataType: "json",
-            cache: true
-        }).then(/*(data) => {
-            if(data.code){
-                throw "error";
-            }else{
-                resolve(data);
-            }
-        }*/
-        resolve, reject);
-        
-    });
+        return axios.get(this.hostUrl+url);
     }
 }
 
