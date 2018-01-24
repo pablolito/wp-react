@@ -2,10 +2,20 @@ import $ from 'jquery';
 
 let utils = {
     apiRoute: "http://axelfalguier.com",
+    flickrApiRoute: "https://api.flickr.com",
     htmlEntitiesDecode: (content) => {
         let parser = new DOMParser();
         let parsedHtml = parser.parseFromString(content, 'text/html').body.innerText;
         return parsedHtml;
+    },
+    getWindowHeight: () => {
+        return window.outerHeight;
+    },
+    offset: (el) => {
+        let rect = el.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
     },
     isSmallScreen: () => {
         if (window.matchMedia("(min-width: 750px").matches){

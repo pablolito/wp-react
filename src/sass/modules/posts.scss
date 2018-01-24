@@ -109,6 +109,43 @@
         }
     }
 }
+.albums{
+    .items-list{
+        max-width: 90%;
+    }
+}
+.photos-list{
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 2rem;
+}
+.album-cover{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .caption{
+        position: absolute;
+        bottom: 5rem;
+        left: 2rem;
+        color: #FFF;
+        z-index: 2;
+        h1{
+            font-size: 2rem;
+            font-family: $primary-font;
+            line-height: normal;
+            margin-bottom: 0.5rem;
+        }
+        .btn{
+            padding: 0.5rem 1rem;
+            border: 2px solid #FFF;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
 .post{
     padding-bottom: 3rem;
     .other{
@@ -251,3 +288,20 @@
     }
     
 }
+
+.my-masonry-grid {
+    display: -webkit-box; // Not needed if autoprefixing
+    display: -ms-flexbox; // Not needed if autoprefixing
+    display: flex;
+    margin-left: -15px; // gutter size offset
+  }
+  .my-masonry-grid_column {
+    border-left: 15px solid transparent; // gutter size
+    background-clip: padding-box;
+  }
+  
+  // Style your items
+  .my-masonry-grid_column > div { // change div to reference your elements you put in <Masonry>
+    background: #FFF;
+    margin-bottom: 15px;
+  }
