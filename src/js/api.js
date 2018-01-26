@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 export class Api{
-    constructor(hostUrl, flickrKey){
+    constructor(hostUrl){
         this.hostUrl = hostUrl;
-        this.flickrKey = (flickrKey ? flickrKey : null);
     }
     getAllPostsHome(){
         return this.get("/wp-json/wp/v2/posts?categories=16,15");
@@ -24,17 +23,21 @@ export class Api{
         return this.get("/wp-json/wp/v2/posts/269");
     }
     getAlbumsList(){
-        return this.get(`/services/rest/?api_key=${this.flickrKey}&nojsoncallback=1&format=json&method=flickr.photosets.getList&user_id=154586672@N07&`);
+        return this.getAxios('/api/getAlbumsList');
     }
     getPhotosList(id){
-        return this.get(`/services/rest/?api_key=${this.flickrKey}&nojsoncallback=1&photoset_id=${id}&format=json&method=flickr.photosets.getPhotos&user_id=154586672@N07&`);
+        return this.getAxios('/api/getPhotosList/?id='+id);
     }
     getAlbumInfos(id){
-        return this.get(`/services/rest/?api_key=${this.flickrKey}&nojsoncallback=1&photoset_id=${id}&format=json&method=flickr.photosets.getInfo&user_id=154586672@N07&`);
+        return this.getAxios('/api/getAlbumInfos/?id='+id);
     }
 
     get(url){
         return axios.get(this.hostUrl+url);
+    }
+
+    getAxios(url){
+        return axios.get(url);
     }
 }
 

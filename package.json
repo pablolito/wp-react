@@ -4,9 +4,10 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server -d --config webpack.dev.config.js --progress --colors",
-    "prod": "NODE_ENV=production node server.js",
-    "build": "webpack --config webpack.prod.config.js -p --progress --colors"
+    "start": "NODE_ENV=dev node server.js",
+    "build-dev": "webpack --config webpack.dev.config.js", 
+    "prod": "NODE_ENV=prod node server.js",
+    "build-prod": "webpack --config webpack.prod.config.js -p --progress --colors"
   },
   "dependencies": {
     "axios": "^0.17.1",

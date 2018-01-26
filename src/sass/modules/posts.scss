@@ -112,8 +112,28 @@
 .albums{
     .items-list{
         max-width: 90%;
+        a{
+            display: block;
+            position: relative;
+            &:hover{
+                .caption{
+                    background: linear-gradient(0deg,rgba(0,0,0,.9) 0,transparent 50%,transparent);
+                }
+            }
+        }
+        .columns{
+            margin-bottom: 2rem;
+        }
+        .caption{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            color: #FFF;
+            padding: 1rem;
+        }
     }
 }
+
 .photos-list{
     max-width: 80%;
     margin: 0 auto;
@@ -131,7 +151,7 @@
         color: #FFF;
         z-index: 2;
         h1{
-            font-size: 2rem;
+            font-size: 3rem;
             font-family: $primary-font;
             line-height: normal;
             margin-bottom: 0.5rem;
@@ -140,7 +160,7 @@
             padding: 0.5rem 1rem;
             border: 2px solid #FFF;
             display: inline-block;
-            text-transform: uppercase;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
         }

@@ -6,10 +6,11 @@ export class PostItem extends React.Component {
         super(props);
     }
     render() {
+        //let test = data.acf.upload_photo_slider.sizes.medium_large-height;
         let data = this.props.data;
         let imageGroup = <div>
             <LazyLoad height={200}>
-                <img src={data.acf.upload_photo_slider.sizes.medium_large} />
+                <img width="700" height="394" src={data.acf.upload_photo_slider.sizes.medium_large} />
             </LazyLoad>
             <caption>
                 <div>

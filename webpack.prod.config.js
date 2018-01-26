@@ -24,7 +24,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         // This tells the Webpack and Babel for optimization for performance
-        NODE_ENV: JSON.stringify('production')
+        NODE_ENV: JSON.stringify('prod')
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),

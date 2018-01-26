@@ -27,8 +27,8 @@ ReactDOM.render(
           <Route exact path="/filmographie" component={Posts} />
           <Route path="/filmographie/:id" component={Post} />
           <Route path="/realisateur" component={Director} />
-          <Route path="/albums" component={Albums} />
-          <Route path="/album/:id" component={Album} />
+          <Route exact path="/albums" component={Albums} />
+          <Route path="/albums/:id" component={Album} />
           <Route path="/contact" component={Contact} />
           <Route component={NoMatch} />
       </Switch>

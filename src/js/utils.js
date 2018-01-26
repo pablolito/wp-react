@@ -2,7 +2,6 @@ import $ from 'jquery';
 
 let utils = {
     apiRoute: "http://axelfalguier.com",
-    flickrApiRoute: "https://api.flickr.com",
     htmlEntitiesDecode: (content) => {
         let parser = new DOMParser();
         let parsedHtml = parser.parseFromString(content, 'text/html').body.innerText;
