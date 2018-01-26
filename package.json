@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=dev node server.js",
     "build-dev": "webpack --config webpack.dev.config.js", 
-    "prod": "NODE_ENV=prod node server.js",
+    "prod": "NODE_ENV=production node server.js",
     "build-prod": "webpack --config webpack.prod.config.js -p --progress --colors"
   },
   "dependencies": {

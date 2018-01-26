@@ -13,7 +13,7 @@ const wpUrlApi = "http://axelfalguier.com/wp-json/";
 app.use(express.static(__dirname + '/'));
 
 const flickrBaseParams = {
-  api_key: (NODE_ENV == "prod") ? process.env.FLICKR_API_KEY : jsonDevConf.flickrKeyApi,
+  api_key: (NODE_ENV === "production") ? process.env.FLICKR_API_KEY : jsonDevConf.flickrKeyApi,
   nojsoncallback: "1",
   user_id: "154586672@N07",
   format: "json"
