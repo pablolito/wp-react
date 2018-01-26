@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const axios = require('axios');
 const NODE_ENV = process.env.NODE_ENV;
-const jsonDevConf = (NODE_ENV === "dev") ? require("./dev-conf.json") : null;
+const jsonDevConf = (NODE_ENV == "dev") ? require("./dev-conf.json") : null;
 
 const flickrUrlApi = "https://api.flickr.com/services/rest/";
 const wpUrlApi = "http://axelfalguier.com/wp-json/";
@@ -11,10 +11,9 @@ const wpUrlApi = "http://axelfalguier.com/wp-json/";
 
 // Since the root/ dir contains our index.html
 app.use(express.static(__dirname + '/'));
-console.log(NODE_ENV);
 
 const flickrBaseParams = {
-  api_key: (NODE_ENV === "prod") ? process.env.FLICKR_API_KEY : jsonDevConf.flickrKeyApi,
+  api_key: (NODE_ENV == "prod") ? process.env.FLICKR_API_KEY : jsonDevConf.flickrKeyApi,
   nojsoncallback: "1",
   user_id: "154586672@N07",
   format: "json"
