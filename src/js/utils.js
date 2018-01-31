@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 let utils = {
-    apiRoute: "http://axelfalguier.com",
+    apiRoute: "https://bo.axelfalguier.com",
     htmlEntitiesDecode: (content) => {
         let parser = new DOMParser();
         let parsedHtml = parser.parseFromString(content, 'text/html').body.innerText;
