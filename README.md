@@ -1,7 +1,10 @@
 # wp-react
 ### A single-page app React with React Router, Wordpress REST API and flickr API
 
-## Install
+# View the project in production :
+axelfalguier.com
+
+## Install dev dependencies
 npm install
 
 ## Build and launch app in local
@@ -13,9 +16,10 @@ npm run build-dev
 ## Prod Build
 npm run build-prod
 
-## local config
-* Adding dev-conf.json file on the root directory
+## Local config
+* Adding a dev-conf.json file on the root directory
 * Adding this lines
+
 `{
     "flickrUrlApi" : "https://api.flickr.com/services/rest/",
     "flickrKeyApi" : "myflickrkey",
@@ -27,6 +31,3 @@ npm run build-prod
 * Move wp api call in express
 * React tests
 * Optim heroku conf var env
-
-# View the project in production :
-axelfalguier.com
