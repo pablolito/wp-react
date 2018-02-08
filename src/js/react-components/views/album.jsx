@@ -7,6 +7,7 @@ import Masonry from 'react-masonry-css';
 import LazyLoad from 'react-lazyload';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import utils from '../../utils';
+import { SliderAlbum } from '../shared/sliderAlbum.jsx';
 import $ from 'jquery';
 
 export class Album extends React.Component {
@@ -15,7 +16,9 @@ export class Album extends React.Component {
         this.api = new Api();
         this.state = {
             photosList: null,
-            albumTitle: null
+            albumTitle: null,
+            sliderIsVisible: false,
+            currentSliderIndex: 0
         }
     }
 
@@ -48,7 +51,15 @@ export class Album extends React.Component {
         }).catch((onreject) => { this.setState({ isInError: true }) });
     }
 
-    renderPhotosList(value) {
+    loadSliderAlbum(index){
+        //console.log(index);
+        this.setState({
+            sliderIsVisible: true,
+            currentSliderIndex: index
+        });
+    }
+
+    renderPhotosList(value, index) {
         let src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`;
         let photoItem = <div key={value.id}>
             <LazyLoad height={100}>
@@ -58,7 +69,7 @@ export class Album extends React.Component {
                     transitionAppearTimeout={300}
                     transitionEnter={false}
                     transitionLeave={false}>
-                    <img src={src} />
+                    <img onClick={(e)=>this.loadSliderAlbum(index)} src={src} />
                 </ReactCSSTransitionGroup>
             </LazyLoad>
         </div>;
@@ -100,7 +111,7 @@ export class Album extends React.Component {
     }
 
     render() {
-        //console.log("render");
+        
         const breakpointColumnsObj = {
             default: 4,
             1100: 3,
@@ -110,7 +121,6 @@ export class Album extends React.Component {
         if ((this.state.photosList == null)) {
             return (<Loader isInError={this.state.isInError} />);
         }
-
         return (
             <div>
                 <div ref="albumLayout" className="album-layout">
@@ -118,9 +128,10 @@ export class Album extends React.Component {
                 </div>
                 <div id="photosList" className="photos-list">
                     <Masonry breakpointCols={breakpointColumnsObj} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-                        {this.state.photosList.map((value, index) => this.renderPhotosList(value))}
+                        {this.state.photosList.map((value, index) => this.renderPhotosList(value, index))}
                     </Masonry>
                 </div>
+                <SliderAlbum currentSliderIndex={this.state.currentSliderIndex} isVisible={this.state.sliderIsVisible} data={this.state.photosList}></SliderAlbum>
             </div>
         );
     }

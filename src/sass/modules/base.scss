@@ -362,7 +362,8 @@ footer{
 
 
 /* slick */
-.slick-slider{
+.home{
+    .slick-slider{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -462,6 +463,7 @@ footer{
     }
     
 }
+}
 
 /* custom modal */
 .modal{
@@ -527,22 +529,24 @@ footer{
             font-size: 1.2rem; 
         }
     }
-    .slick-slider{
-        .caption{
-            font-size: 1.7rem;
-            line-height: 2rem;
-            max-width: 320px;
-            width: auto;
-            text-align: right;
-            .button{
-                font-size: 1rem;
-            }
-            &.intro{
-                font-size: 4rem;
-                line-height: 4rem;
-                width: 70%;
-                .description{
-                    font-size: 2rem;
+    .home{
+        .slick-slider{
+            .caption{
+                font-size: 1.7rem;
+                line-height: 2rem;
+                max-width: 320px;
+                width: auto;
+                text-align: right;
+                .button{
+                    font-size: 1rem;
+                }
+                &.intro{
+                    font-size: 4rem;
+                    line-height: 4rem;
+                    width: 70%;
+                    .description{
+                        font-size: 2rem;
+                    }
                 }
             }
         }

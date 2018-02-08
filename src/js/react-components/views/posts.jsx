@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { PostItem } from '../shared/postItem.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
@@ -75,7 +74,9 @@ export class Posts extends React.Component {
         if( (this.state.data == null) ){
             return (<Loader isInError={this.state.isInError} />);
         }
+        
         let sortDataByPush = this.state.data.sort(function(a,b) {return (a.acf.push_home > b.acf.push_home) ? -1 : ((b.acf.push_home > a.acf.push_home) ? 1 : 0);} );
+        //console.log(sortDataByPush);
         //console.log(sortDataByPush);
         return (
             <div className="posts">

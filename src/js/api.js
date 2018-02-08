@@ -22,6 +22,7 @@ export class Api{
     getDirectorPost(){
         return this.get("/wp-json/wp/v2/posts/269");
     }
+    
     getAlbumsList(){
         return this.getAxios('/api/getAlbumsList');
     }

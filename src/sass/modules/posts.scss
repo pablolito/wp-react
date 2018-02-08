@@ -139,6 +139,9 @@
     margin: 0 auto;
     text-align: center;
     padding-top: 2rem;
+    img{
+        cursor: pointer;
+    }
 }
 .album-cover{
     width: 100%;
@@ -164,6 +167,26 @@
             font-weight: bold;
             cursor: pointer;
         }
+    }
+}
+.slider-album{
+    text-align: center;
+    
+    .modal{
+        position: fixed;
+        overflow-y: auto;
+        h1{
+            color: #FFF;
+        }
+        .container{
+            display: inline-block;
+        }
+        .slick-slide{
+            img{
+                margin: 0 auto;
+            }
+        }
+        
     }
 }
 .post{
