@@ -25,6 +25,5 @@ npm run build-prod
 
 ## TODO :
 * Redux implementation
-* Move wp api call in express
-* React tests
+* Jest tests
 * Optim heroku conf var env
