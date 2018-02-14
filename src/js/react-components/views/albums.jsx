@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BannerPage } from '../shared/bannerPage.jsx';
-import { Api } from '../../api';
 import { Loader } from '../shared/loader.jsx';
 import LazyLoad from 'react-lazyload';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -11,14 +11,13 @@ import utils from '../../utils';
 export class Albums extends React.Component {
     constructor(props) {
         super(props);
-        this.api = new Api();
         this.state = {
             albumsList: null
         }
     }
 
     getAlbumsList() {
-        this.api.getAlbumsList().then(json => {
+        axios.get('/api/getAlbumsList').then(json => {
             // get albums list
             this.setState({ albumsList: json.data.photosets.photoset });
         }).catch((onreject) => { this.setState({ isInError: true }) });
@@ -44,10 +43,10 @@ export class Albums extends React.Component {
                         <div style={style}></div>
                         <div className="caption">
                             <p>
-                                {value.title._content}
+                                <strong>{value.title._content}</strong>
                             </p>
                             <p>
-                                <strong>{value.photos} photos</strong>
+                                {value.photos} photos
                             </p>
                         </div>
                     </Link>
@@ -61,7 +60,6 @@ export class Albums extends React.Component {
         window.scrollTo(0, 0);
         this.getAlbumsList();
     }
-
 
     render() {
         if ((this.state.albumsList == null)) {

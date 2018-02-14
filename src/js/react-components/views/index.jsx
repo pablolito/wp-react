@@ -1,13 +1,12 @@
 import React from 'react'
 import { SliderHome } from '../shared/sliderHome.jsx';
-import { Api } from '../../api';
+import axios from 'axios';
 import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils'; 
 
 export class Home extends React.Component {
     constructor(props){
         super(props);
-        this.api = new Api(utils.apiRoute);
         this.state = { 
             data: null,
             isInError: false
@@ -15,7 +14,7 @@ export class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.api.getAllPostsHome().then((json) => {
+        axios.get('/api/getAllPostsHome').then((json) => {
             this.setState({data: json.data});
         }).catch((onreject) => { this.setState({isInError: true}) });
         utils.footerFixed();

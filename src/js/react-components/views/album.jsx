@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Api } from '../../api';
+import axios from 'axios';
 import { Loader } from '../shared/loader.jsx';
 import Masonry from 'react-masonry-css';
 import LazyLoad from 'react-lazyload';
@@ -13,7 +13,6 @@ import $ from 'jquery';
 export class Album extends React.Component {
     constructor(props) {
         super(props);
-        this.api = new Api();
         this.state = {
             photosList: null,
             albumTitle: null,
@@ -38,21 +37,20 @@ export class Album extends React.Component {
     }
 
     getAlbumInfos() {
-        this.api.getAlbumInfos(this.props.match.params.id).then(json => {
+        axios.get('/api/getAlbumInfos/?id='+this.props.match.params.id).then(json => {
             // get album list
             this.setState({ albumTitle: json.data.photoset.title._content });
         }).catch((onreject) => { this.setState({ isInError: true }) });
     }
 
     getPhotosList() {
-        this.api.getPhotosList(this.props.match.params.id).then(json => {
+        axios.get('/api/getPhotosList/?id='+this.props.match.params.id).then(json => {
             // get photos list
             this.setState({ photosList: json.data.photoset.photo });
         }).catch((onreject) => { this.setState({ isInError: true }) });
     }
 
     loadSliderAlbum(index){
-        //console.log(index);
         this.setState({
             sliderIsVisible: true,
             currentSliderIndex: index
@@ -103,7 +101,7 @@ export class Album extends React.Component {
             transitionLeave={false}>
             <div className="album-cover" style={style}>
                 <div className="caption">
-                    <h1># {this.state.albumTitle}</h1>
+                    <h1>{this.state.albumTitle}</h1>
                     <span onClick={() => this.scrollTo('photosList')} className="btn">Découvrir l'album</span>
                 </div>
             </div>

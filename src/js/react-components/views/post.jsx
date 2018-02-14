@@ -1,6 +1,6 @@
 import React from 'react';
 import { BannerPage } from '../shared/bannerPage.jsx';
-import { Api } from '../../api';
+import axios from 'axios';
 import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils';
 import $ from 'jquery';
@@ -8,7 +8,6 @@ import $ from 'jquery';
 export class Post extends React.Component {
     constructor(props) {
         super(props);
-        this.api = new Api(utils.apiRoute);
         this.state = {
             data: null,
             tagsData: null,
@@ -17,7 +16,7 @@ export class Post extends React.Component {
     }
    
     getPost(articleId) {
-        this.api.getPost(articleId).then(json => {
+        axios.get('/api/getPost/?id='+articleId).then(json => {
             this.setState({
                 data: json.data
             });
@@ -33,7 +32,6 @@ export class Post extends React.Component {
         window.scrollTo(0, 0);
         this.getPost(this.props.match.params.id);
         utils.footerFixed();
-        //this.getPostTagsList(this.props.match.params.id);
     }
 
     render() {

@@ -1,8 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PostItem } from '../shared/postItem.jsx';
 import { BannerPage } from '../shared/bannerPage.jsx';
-import { Api } from '../../api';
 import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils';
 export class Posts extends React.Component {
@@ -18,19 +18,17 @@ export class Posts extends React.Component {
         }
         this.getFilteredPost = this.getFilteredPost.bind(this);
         this.getPostsList = this.getPostsList.bind(this);
-        this.api = new Api(utils.apiRoute);
     }
 
     addTagsInArray(tab){
-        tab.map(item => this.tagsTab.push(item)); // loop 2
+        tab.map(item => this.tagsTab.push(item));
     }
 
     getPostsList(){
-        this.api.getAllPosts().then(json => {
+        axios.get('/api/getAllPosts').then(json => {
             // get tags list 
             json.data.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
             this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
-            //console.log(this.tagsTab);
             this.getTagsList(this.tagsTab);
             // put json data in state
             this.setState({
@@ -42,7 +40,7 @@ export class Posts extends React.Component {
     }
 
     getFilteredPost(id, index){
-        this.api.getPostsByTags(id).then(json => {
+        axios.get('/api/getPostsByTags/?id='+id).then(json => {
             this.setState({
                 data : json.data,
                 allTagsAreActive: false,
@@ -52,7 +50,7 @@ export class Posts extends React.Component {
     }
 
     getTagsList(idList){
-        this.api.getTagsList(idList.toString()).then(json => {
+        axios.get('/api/getPostsByTags/?id='+idList.toString()).then(json => {
             this.setState({
                 tagsData : json.data
             });
@@ -76,8 +74,7 @@ export class Posts extends React.Component {
         }
         
         let sortDataByPush = this.state.data.sort(function(a,b) {return (a.acf.push_home > b.acf.push_home) ? -1 : ((b.acf.push_home > a.acf.push_home) ? 1 : 0);} );
-        //console.log(sortDataByPush);
-        //console.log(sortDataByPush);
+        
         return (
             <div className="posts">
                 <BannerPage title="Mes dernières réalisations" />

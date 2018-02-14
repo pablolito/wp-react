@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { BannerPage } from '../shared/bannerPage.jsx';
-import { Api } from '../../api';
+import axios from 'axios';
 import { Loader } from '../shared/loader.jsx';
 import utils from '../../utils';
 import LazyLoad from 'react-lazyload';
@@ -12,14 +12,13 @@ import $ from 'jquery';
 export class Director extends React.Component {
     constructor(props) {
         super(props);
-        this.api = new Api(utils.apiRoute);
         this.state = {
             data: null,
             isInError: false
         }
     }
     getPost() {
-        this.api.getDirectorPost().then(json => {
+        axios.get('/api/getDirectorPost').then(json => {
             this.setState({
                 data: json.data
             });

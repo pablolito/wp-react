@@ -175,6 +175,11 @@
     .modal{
         position: fixed;
         overflow-y: auto;
+        background: rgba(0, 0, 0, 0.95);
+        * {
+            min-height: 0;
+            min-width: 0;
+          }
         h1{
             color: #FFF;
         }
@@ -186,7 +191,10 @@
                 margin: 0 auto;
             }
         }
-        
+        .caption{
+            color: #FFF;
+            font-size: 1.5rem;
+        }
     }
 }
 .post{

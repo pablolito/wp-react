@@ -4,12 +4,10 @@ const path = require('path');
 const axios = require('axios');
 const NODE_ENV = process.env.NODE_ENV;
 const jsonDevConf = (NODE_ENV == "dev") ? require("./dev-conf.json") : null;
-
 const flickrUrlApi = "https://api.flickr.com/services/rest/";
-const wpUrlApi = "http://axelfalguier.com/wp-json/";
+const wpUrlApi = (NODE_ENV == "dev") ? jsonDevConf.wpUrlApi : process.env.WP_API_URL;
 
 
-// Since the root/ dir contains our index.html
 app.use(express.static(__dirname + '/'));
 
 const flickrBaseParams = {
@@ -19,20 +17,12 @@ const flickrBaseParams = {
   format: "json"
 }
 
-// API get request
+// API flickr get request
 app.get('/api/getAlbumsList', function (req, res) {
   let reqParams = {
     method : "flickr.photosets.getList"
   }
-  axios.get(flickrUrlApi, {
-    params: Object.assign(flickrBaseParams, reqParams)
-  }).then((response) => {
-      let json = response.data;
-      res.send(json);
-    })
-    .catch((err) => {
-      res.send(err);
-    })
+  axiosGet(reqParams, res);
 });
 
 app.get('/api/getPhotosList', function (req, res) {
@@ -40,15 +30,7 @@ app.get('/api/getPhotosList', function (req, res) {
     method : "flickr.photosets.getPhotos",
     photoset_id : req.query.id
   }
-  axios.get(flickrUrlApi, {
-    params: Object.assign(flickrBaseParams, reqParams)
-  }).then((response) => {
-      let json = response.data;
-      res.send(json);
-    })
-    .catch((err) => {
-      res.send(err);
-    })
+  axiosGet(reqParams, res);
 });
 
 app.get('/api/getAlbumInfos', function (req, res) {
@@ -56,8 +38,51 @@ app.get('/api/getAlbumInfos', function (req, res) {
     method : "flickr.photosets.getInfo",
     photoset_id : req.query.id
   }
+  axiosGet(reqParams, res);
+});
+
+app.get('/api/getPhotoDetails', function (req, res) {
+  let reqParams = {
+    method : "flickr.photos.getInfo",
+    photo_id : req.query.id
+  }
+  axiosGet(reqParams, res);
+});
+
+// API WP get request
+app.get('/api/getAllPostsHome', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/posts?categories=16,15`, res);
+});
+
+app.get('/api/getAllPosts', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/posts?categories=15`, res);
+});
+
+app.get('/api/getPost', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/posts/${req.query.id}`, res);
+});
+
+app.get('/api/getPostsByTags', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/posts?tags=${req.query.id}`, res);
+});
+
+app.get('/api/getTagsList', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/tags?include=${req.query.id}`, res);
+});
+
+app.get('/api/getDirectorPost', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/posts/269`, res);
+});
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
+
+
+function axiosGet(objParams, res){
   axios.get(flickrUrlApi, {
-    params: Object.assign(flickrBaseParams, reqParams)
+    params: Object.assign(flickrBaseParams, objParams)
   }).then((response) => {
       let json = response.data;
       res.send(json);
@@ -65,14 +90,17 @@ app.get('/api/getAlbumInfos', function (req, res) {
     .catch((err) => {
       res.send(err);
     })
-});
+}
 
-
-// Always return the main index.html, so react-router render the route in the client
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
-});
-
+function simpleAxiosGet(url, res){
+  axios.get(url).then((response) => {
+    let json = response.data;
+    res.send(json);
+  })
+  .catch((err) => {
+    res.send(err);
+  })
+}
 
 
 // Heroku bydefault set an ENV variable called PORT=443
