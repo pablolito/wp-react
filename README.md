@@ -1,23 +1,30 @@
 # wp-react
-### A single-page app React with React Router and WP REST API.
+### A single-page app React with React Router, Wordpress REST API and flickr API
 
-## Install
+## Install dev dependencies
 npm install
 
 ## Build and launch app in local
 npm start
 
-## Prod Build
-npm run build
+## Dev Build
+npm run build-dev
 
-## Prod build and launch
-npm run prod
+## Prod Build
+npm run build-prod
+
+## Local config
+* Add a dev-conf.json file on the root directory
+* Add this lines :
+
+`{
+    "flickrUrlApi" : "https://api.flickr.com/services/rest/",
+    "flickrKeyApi" : "myflickrkey",
+    "wpUrlApi" : "mywordpressurlapi"
+}`
 
 ## TODO :
 * Redux implementation
-
-
-## Contributing
-wp-react is an open source project so feel free to report issues and make pull requests.
-
-
+* Move wp api call in express
+* React tests
+* Optim heroku conf var env
