@@ -176,10 +176,6 @@
         position: fixed;
         overflow-y: auto;
         background: rgba(0, 0, 0, 0.95);
-        * {
-            min-height: 0;
-            min-width: 0;
-          }
         h1{
             color: #FFF;
         }
@@ -193,7 +189,14 @@
         }
         .caption{
             color: #FFF;
-            font-size: 1.5rem;
+            font-size: 0.8rem;
+            p{
+                &:first-child{
+                    font-style: italic;
+                    font-size: 1rem;
+                    margin-top: 0.3rem;
+                }
+            }
         }
     }
 }

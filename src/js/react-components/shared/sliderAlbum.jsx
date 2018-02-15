@@ -18,13 +18,17 @@ export class SliderAlbum extends React.Component {
 
 
     renderSlideData(value, index, nbSlide) {
+
         let src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_h.jpg`;
         let item = <div key={index}>
             <img src={src} />
             {(this.state.photoDetail) ?
-                <div className="caption">{this.state.photoDetail[index].title._content}</div>
+                <div className="caption">
+                    <p dangerouslySetInnerHTML={{ __html: this.findCurrentDetails(value.id).description}}></p>
+                    <p dangerouslySetInnerHTML={{ __html: this.findCurrentDetails(value.id).title}}></p>
+                </div>
                 :
-                <div className="caption">Loading...</div>
+                <div className="caption">Chargement en cours...</div>
             }
         </div>;
         
@@ -34,8 +38,17 @@ export class SliderAlbum extends React.Component {
             this.cpt++;
             (this.cpt === nbSlide ? this.setState({ photoDetail: this.photoDetailArray }) : null)
         }).catch((onreject) => { this.photoDetailArray.push({}) });
-        
+
         return item;
+
+    }
+
+    findCurrentDetails(id){
+        let currentDetails = this.state.photoDetail.find(function (obj) { return obj.id === id; });
+        return {
+            title: (currentDetails && currentDetails.title._content ? currentDetails.title._content : ""), 
+            description: (currentDetails && currentDetails.description._content ? currentDetails.description._content : "")
+        };
     }
 
     toggleModal() {
@@ -56,11 +69,11 @@ export class SliderAlbum extends React.Component {
             const imgs = domSlider.querySelectorAll('img');
             // vertical align for images
             imgs.forEach((img) => {
+                img.style.maxHeight = this.windowHeight - 200 + "px";                
                 img.onload = () => {
-                    let marginTop = (this.windowHeight / 2) - (img.height / 2);
+                    let marginTop = (this.windowHeight / 2) - ((img.height + 200) / 2);
                     img.style.marginTop = marginTop + "px";
                 }
-                img.style.maxHeight = this.windowHeight + "px";
             });
         }
     }

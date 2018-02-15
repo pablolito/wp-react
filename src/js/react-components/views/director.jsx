@@ -105,7 +105,7 @@ export class Director extends React.Component {
                     <div className="cnt-center">
                         <h3 className="tex-center">Contact</h3>
                         <div className="text-center">
-                            <p className="mb2">Vous souhaitez en savoir plus sur mes projets n'hésitez pas à me contacter.</p>
+                            <p className="mb2">Vous souhaitez réaliser un film, vous avez besoin d’un reportage photos, vous souhaitez me commander une de mes photos, contactez moi :</p>
                             <div className="card">
                                 <p><strong>axelfalguier@hotmail.com</strong></p>
                                 <p>07 85 28 94 94</p>
