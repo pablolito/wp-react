@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "NODE_ENV=dev node server.js",
-    "build-dev": "webpack --config webpack.dev.config.js", 
+    "build-dev": "webpack --config webpack.dev.config.js",
     "prod": "NODE_ENV=production node server.js",
     "build-prod": "webpack --config webpack.prod.config.js -p --progress --colors"
   },
@@ -28,7 +28,7 @@
     "babel-preset-react": "^6.23.0",
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.7.2",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "sass-loader": "^6.0.3",

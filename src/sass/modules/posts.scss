@@ -289,6 +289,32 @@
             width: 100%;
         }
     }
+    .offer{
+        padding: 3rem 2rem;
+        &:nth-child(odd){
+            background-color: #333;
+            color: #FFF;
+            .columns{
+                order: 1;
+            }
+            .columns + .columns{
+                order: 0;
+            }
+        }
+        h2{
+            text-align: center;
+            font-family: $secondary-font;
+            margin-bottom: 2rem;
+        }
+        .desc{
+            text-align: justify;
+        }
+        ul{
+            li{
+                margin-left: 20px;
+            }
+        }
+    }
 }
 
 @include breakpoint(medium){

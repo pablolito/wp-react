@@ -6,6 +6,7 @@ import {Post} from './react-components/views/post.jsx';
 import {Director} from './react-components/views/director.jsx';
 import {Albums} from './react-components/views/albums.jsx';
 import {Album} from './react-components/views/album.jsx';
+import {Offer} from './react-components/views/offer.jsx';
 import {Contact} from './react-components/views/contact.jsx';
 import {Nav} from './react-components/shared/nav.jsx';
 import {NoMatch} from './react-components/shared/noMatch.jsx';
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route path="/realisateur" component={Director} />
           <Route exact path="/albums" component={Albums} />
           <Route path="/albums/:id" component={Album} />
+          <Route path="/prestations" component={Offer} />
           <Route path="/contact" component={Contact} />
           <Route component={NoMatch} />
       </Switch>

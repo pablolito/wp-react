@@ -74,6 +74,10 @@ app.get('/api/getDirectorPost', function (req, res) {
   simpleAxiosGet(`${wpUrlApi}/posts/269`, res);
 });
 
+app.get('/api/getOfferPost', function (req, res) {
+  simpleAxiosGet(`${wpUrlApi}/posts/503`, res);
+});
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'index.html'));
