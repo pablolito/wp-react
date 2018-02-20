@@ -77,7 +77,9 @@ export class SliderAlbum extends React.Component {
             });
         }
     }
-
+    rightClickCall(e){
+        e.preventDefault();
+    }
 
     render() {
         let settings = {
@@ -102,7 +104,7 @@ export class SliderAlbum extends React.Component {
         }
 
         return (
-            <div className="slider-album">
+            <div onContextMenu={this.rightClickCall} className="slider-album">
                 {(this.state.openModal) ?
                     <Modal toggleModalCallback={this.toggleModal}>
                         <Slider ref={(slider) => { this.slider = slider }} {...settings}>

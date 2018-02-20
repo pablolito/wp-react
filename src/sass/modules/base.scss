@@ -117,10 +117,6 @@ svg[class^="icon"]{
     padding: 1rem;
 }
 
-.wraper-ttl{
-    display: inline-block;
-    max-width: 70%;
-}
 .border-ttl{
     display: table;
     white-space: nowrap;
@@ -164,7 +160,7 @@ header{
             strong{
                 display: block;
                 text-transform: uppercase;
-                font-size: 0.9rem;
+                font-size: 0.7rem;
                 font-family: Helvetica, Arial, sans-serif;
                 font-weight: normal;
             }
@@ -189,7 +185,7 @@ header{
             display: none;
             &.active{
                 position: fixed;
-                top: 89px;
+                top: 84px;
                 left: 0;
                 height: 100%;
                 width: 100%;
@@ -285,7 +281,7 @@ footer{
     h1{
         text-transform: uppercase;
         font-family: $secondary-font;
-        font-size: 1rem;
+        font-size: 1.5rem;
         //border-bottom: 1px solid #f1f1f1;
         //padding-bottom: 0.5rem;
         font-weight: normal;
@@ -535,6 +531,10 @@ footer{
 
 
 @include breakpoint(medium){
+    .wraper-ttl{
+        display: inline-block;
+        max-width: 70%;
+    }
     .icon-play{
         width: 10rem;
         height: 10rem;
@@ -609,6 +609,13 @@ footer{
         }
     }
     header{
+        .logo{
+            h1{
+                strong{
+                    font-size: 0.8rem;
+                }
+            }
+        }
         nav{
             .icon-rs{
                 fill: #000;

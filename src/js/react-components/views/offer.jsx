@@ -79,6 +79,24 @@ export class Offer extends React.Component {
                     (this.state.data.acf.buy_photo_photo ? this.state.data.acf.buy_photo_photo.sizes.large : false),
                     this.state.data.acf.buy_photo_description)}
                 </div>
+                <div className="customer-banner">
+                    <h3 className="tex-center">Ils m'ont accordé leur confiance</h3>
+                    <div className="wrapper-customer-mozaic">
+                        <div className="customer-mozaic">
+                            <div><a href="#"><img src="../../dist/images/logos/parc-naturel-regional-du-vercors.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-grandangle-800x800.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-projet-parc-haut-jura.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-LPO38.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-frapna.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/federation-leo-lagrange.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-CApluriel-OCCITANIE-Q.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/CM-logo-quadri.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/gentiana-cbna600px.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/Logo-ADA-Occitanie.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-FDC.jpg" /></a></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
 
