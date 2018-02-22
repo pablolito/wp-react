@@ -23,7 +23,7 @@ body, html{
 }
 body{
     /*background: #F8F8FF;*/
-    padding-top: 90px;
+    padding-top: 85px;
 }
 a{
     text-decoration: none;
@@ -109,6 +109,13 @@ svg[class^="icon"]{
     a{
         color: #FFF;
     }
+}
+.btn{
+    padding: 0.5rem 1rem;
+    border: 2px solid #FFF;
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
 }
 .card{
     color: #FFF;
@@ -430,6 +437,11 @@ footer{
             margin-top: 1rem;
             margin-bottom: 0;
         }
+        .btn{
+            margin-top: 2rem;
+            font-size: 1rem;
+            line-height: normal;
+        }
         &.intro{
             top: 50%;
             left: 50%;
@@ -488,23 +500,34 @@ footer{
         }
         
     }
-    .slick-next, .slick-prev{
-        position: absolute;
-        z-index: 1;
-        width: auto;
-        height: auto;
-        &:before{
-            font-size: 3rem;
-        }
-    }
-    .slick-next{
-        right: 1rem;
-    }
-    .slick-prev{
-        left: 1rem;
-    }
     
+    }
 }
+
+.slick-next, .slick-prev{
+    position: absolute;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    &:before{
+        font-size: 3rem;
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+    }
+}
+.slick-next{
+    right: 1rem;
+    &:before{
+        background: url("/dist/images/next.svg") 0 0 no-repeat;
+    }
+}
+.slick-prev{
+    left: 1rem;
+    &:before{
+        background: url("/dist/images/back.svg") 0 0 no-repeat;
+    }
 }
 
 /* custom modal */
@@ -517,13 +540,24 @@ footer{
     height: 100%;
     z-index: 101;
     display: flex;
-}
 
-.modal{
     .container{
         max-width: 80%;
         iframe{
             max-width: 100%;
+        }
+    }
+
+    .slick-next{
+        right: -35px;
+        &:before{
+            width: 30px;
+        }
+    }
+    .slick-prev{
+        left: -35px;
+        &:before{
+            width: 30px;
         }
     }
 }
@@ -559,10 +593,6 @@ footer{
         }
     }
     .banner{
-        // height: 150px;
-        // .filter-cover{
-        //     height: 150px;
-        // }
         h1{
             font-size: 2rem;
         }
@@ -572,8 +602,11 @@ footer{
             font-size: 1.5rem;
         }
         p:first-child{
-            font-size: 1.2rem; 
+            font-size: 1.3rem; 
         }
+    }
+    .alternative-banner{
+        padding: 15rem 0;
     }
     .home{
         .slick-slider{
@@ -583,9 +616,7 @@ footer{
                 max-width: 320px;
                 width: auto;
                 text-align: right;
-                .button{
-                    font-size: 1rem;
-                }
+                
                 &.intro{
                     font-size: 4rem;
                     line-height: 4rem;
@@ -630,4 +661,19 @@ footer{
             }
         }
     }
+    .modal{
+        .slick-next, .slick-prev{
+            &:before{
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .slick-next{
+            right: -100px;
+        }
+        .slick-prev{
+            left: -100px;
+        }
+    }
+    
 }

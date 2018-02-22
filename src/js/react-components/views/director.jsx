@@ -83,11 +83,29 @@ export class Director extends React.Component {
                     : null
                     }
                 </div>
+                <div className="customer-banner">
+                    <h3 className="tex-center">Ils m'ont accordé leur confiance</h3>
+                    <div className="wrapper-customer-mozaic">
+                        <div className="customer-mozaic">
+                            <div><a href="#"><img src="../../dist/images/logos/parc-naturel-regional-du-vercors.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-grandangle-800x800.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-projet-parc-haut-jura.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-LPO38.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-frapna.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/federation-leo-lagrange.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-CApluriel-OCCITANIE-Q.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/CM-logo-quadri.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/gentiana-cbna600px.jpg" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/Logo-ADA-Occitanie.png" /></a></div>
+                            <div><a href="#"><img src="../../dist/images/logos/logo-FDC.jpg" /></a></div>
+                        </div>
+                    </div>
+                </div>
                 <div ref="contact" className="alternative-banner">
                     <div className="cnt-center">
                         <h3 className="tex-center">Contact</h3>
                         <div className="text-center">
-                            <p className="mb2">Vous souhaitez réaliser un film, vous avez besoin d’un reportage photos, vous souhaitez me commander une de mes photos, contactez moi :</p>
+                            <p className="mb2">Vous souhaitez réaliser un film, vous avez besoin d’un reportage photos,<br /> vous souhaitez me commander une de mes photos, contactez moi :</p>
                             <div className="card">
                                 <p><strong>axelfalguier@hotmail.com</strong></p>
                                 <p>07 85 28 94 94</p>

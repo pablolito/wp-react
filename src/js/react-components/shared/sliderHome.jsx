@@ -25,6 +25,10 @@ export class SliderHome extends React.Component {
       return videoContent;
   }
 
+  nextSlide(){
+    this.slider.innerSlider.slickNext();
+  }
+
   renderItem(itemValue, itemKey){
       let itemSrc = {
         backgroundImage: 'url(' + itemValue.acf.upload_photo_slider.url + ')',
@@ -36,8 +40,13 @@ export class SliderHome extends React.Component {
           : null}
           <div className={(itemValue.categories[0]=="16") ? "caption intro" : "caption"}>
             <p dangerouslySetInnerHTML={{__html: itemValue.title.rendered}}></p>
+            {(itemValue.categories[0]=="16" && itemValue.acf.description =="") ?
+            <div onClick={()=>this.nextSlide()} className="btn">Découvrir mes derniers projets</div>
+            :null}
             {(itemValue.categories[0]=="16" && itemValue.acf.description !=="") ? 
-              <p className="description" dangerouslySetInnerHTML={{__html: itemValue.acf.description}}></p> 
+              <div>
+                <p className="description" dangerouslySetInnerHTML={{__html: itemValue.acf.description}}></p>
+              </div>
               : ""
             }
             {(itemValue.categories[0]=="15") ? <div className="button"><Link to={"/filmographie/"+itemValue.id}>Découvrir le projet</Link></div> : ""}
@@ -55,7 +64,6 @@ export class SliderHome extends React.Component {
   
  
   render() {
-    //console.log("render");
     let settings = {
       dots: true,
       infinite: true,
@@ -82,7 +90,7 @@ export class SliderHome extends React.Component {
           {this.renderMovie(this.state.movieIndex)}
         </Modal>
         : null}
-        <Slider {...settings}>
+        <Slider ref={(c) => {this.slider = c}} {...settings}>
             {this.renderSlideData()}
           </Slider>
       </div>

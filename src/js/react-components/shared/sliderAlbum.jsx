@@ -11,6 +11,7 @@ export class SliderAlbum extends React.Component {
         super(props);
         this.state = { openModal: this.props.isVisible, photoDetail: null }
         this.toggleModal = this.toggleModal.bind(this);
+        this.domSlider = false;
         this.windowHeight = window.outerHeight;
         this.photoDetailArray = [];
         this.cpt = 0;
@@ -61,12 +62,17 @@ export class SliderAlbum extends React.Component {
         this.setState({ openModal: nextProps.isVisible });
     }
 
+    setFocusOnSlider(){
+        this.domSlider.querySelector('.slick-slide').focus();
+    }
+
     componentDidUpdate() {
-        const domSlider = ReactDOM.findDOMNode(this.slider);
-        if (domSlider) {
+        this.domSlider = ReactDOM.findDOMNode(this.slider);
+        if (this.domSlider) {
             // set focus for accessibility
-            domSlider.querySelector('.slick-slide').focus();
-            const imgs = domSlider.querySelectorAll('img');
+            this.setFocusOnSlider();
+
+            const imgs = this.domSlider.querySelectorAll('img');
             // vertical align for images
             imgs.forEach((img) => {
                 img.style.maxHeight = this.windowHeight - 200 + "px";                
@@ -107,7 +113,7 @@ export class SliderAlbum extends React.Component {
             <div onContextMenu={this.rightClickCall} className="slider-album">
                 {(this.state.openModal) ?
                     <Modal toggleModalCallback={this.toggleModal}>
-                        <Slider ref={(slider) => { this.slider = slider }} {...settings}>
+                        <Slider afterChange={()=>this.setFocusOnSlider()} ref={(slider) => { this.slider = slider }} {...settings}>
                             {this.props.data.map((item, index) => this.renderSlideData(item, index, this.props.data.length))}
                         </Slider>
                     </Modal>
