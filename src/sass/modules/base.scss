@@ -257,7 +257,7 @@ footer{
     width: 100%;
     a{
         color: #000;
-        font-weight: bold;
+        text-decoration: underline;
     }
 }
 
@@ -299,6 +299,12 @@ footer{
         margin-top: 1rem;
         display: inline-block;
         text-decoration: underline;
+    }
+    p{
+        font-family: $primary-font;
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-top: 1rem;
     }
 }
 .alternative-banner, .customer-banner{

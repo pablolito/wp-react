@@ -25,11 +25,11 @@ export class Offer extends React.Component {
         }).catch((onreject) => { this.setState({ isInError: true }) });
     }
 
-    renderSection(title, photoSrc, description, topDesciption=false){
+    renderSection(title, photoSrc, description, topDesciption=false, urlLink, labelLink){
         let html = <div>
             <div className="text-center">
                 <div className="wraper-ttl">
-                    <h2 className="border-ttl"><span>{title}</span></h2>
+                    <h1>{title}</h1>
                 </div>
             </div>
             {(topDesciption ? <div className="row">
@@ -42,8 +42,10 @@ export class Offer extends React.Component {
                     {(photoSrc ? <img src={photoSrc} alt=""/> : null)}
                 </div>
                 <div className="columns small-12 medium-7">
-                    <div className="desc" dangerouslySetInnerHTML={{ __html:  description}}>
-                </div>
+                    <div className="desc" dangerouslySetInnerHTML={{ __html:  description}}></div>
+                    <p>
+                        <a className="button mt2" href={urlLink}>{labelLink}</a>
+                    </p>
                 </div>
             </div>
         </div>;
@@ -62,22 +64,32 @@ export class Offer extends React.Component {
         }
         return (
             <div className="post">
-                <BannerPage title={this.state.data.title.rendered} />
-                <div className="offer pt0">{this.renderSection(
+                <div className="offer">{this.renderSection(
                     this.state.data.acf.film_offer_title, 
                     (this.state.data.acf.film_offer_photo ? this.state.data.acf.film_offer_photo.sizes.large : false),
                     this.state.data.acf.film_offer_description,
-                    this.state.data.acf.film_offer_description_top)}
+                    this.state.data.acf.film_offer_description_top,
+                    "/filmographie",
+                    "Découvrir mes films"
+                    )}
                 </div>
                 <div className="offer">{this.renderSection(
                     this.state.data.acf.photo_offer_title, 
                     (this.state.data.acf.photo_offer_photo ? this.state.data.acf.photo_offer_photo.sizes.large : false),
-                    this.state.data.acf.photo_offer_description)}
+                    this.state.data.acf.photo_offer_description,
+                    false,
+                    "/albums",
+                    "Découvrir mes albums"
+                    )}
                 </div>
                 <div className="offer">{this.renderSection(
                     this.state.data.acf.buy_photo_title, 
                     (this.state.data.acf.buy_photo_photo ? this.state.data.acf.buy_photo_photo.sizes.large : false),
-                    this.state.data.acf.buy_photo_description)}
+                    this.state.data.acf.buy_photo_description,
+                    false,
+                    "/albums",
+                    "Découvrir mes albums"
+                    )}
                 </div>
                 <div className="customer-banner">
                     <h3 className="tex-center">Ils m'ont accordé leur confiance</h3>

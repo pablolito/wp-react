@@ -67,7 +67,9 @@ export class Albums extends React.Component {
         }
         return (
             <div className="albums">
-                <BannerPage title="Photos" />
+                <BannerPage 
+                title="Photos" 
+                description="Des Alpes Françaises aux quatre coins du monde, découvrez mes plus belles images naturalistes et de reportage." />
                 <div className="items-list row align-center">
                     {this.state.albumsList.map((value, index) => this.renderAlbumItem(value, index))}
                 </div>

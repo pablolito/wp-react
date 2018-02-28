@@ -225,9 +225,6 @@
                 width: 100%;
                 margin-bottom: 1rem;
             }
-            .desc{
-                text-align: justify;
-            }
         }
     }
     img{
@@ -286,7 +283,7 @@
     }
     .offer{
         padding: 3rem 2rem;
-        &:nth-child(odd){
+        &:nth-child(even){
             background-color: #333;
             color: #FFF;
             .columns{
@@ -300,6 +297,13 @@
             text-align: center;
             font-family: $secondary-font;
             font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
+        h1{
+            text-transform: uppercase;
+            font-family: "Open Sans", sans-serif;
+            font-size: 2rem;
+            font-weight: normal;
             margin-bottom: 2rem;
         }
         .desc{

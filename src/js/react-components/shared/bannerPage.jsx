@@ -16,7 +16,7 @@ export class BannerPage extends React.Component {
         return (
             <div className="banner">
                 <h1>{titleDecode}</h1>
-                {(this.props.description) ? <p><strong>{descriptionDecode}</strong></p> : ""}
+                {(this.props.description) ? <p>{descriptionDecode}</p> : ""}
                 {(this.props.tagsList) ? <ul className="inbl-list tags-list">{this.props.tagsList.map((v, i) => this.renderTagsList(v, i))}</ul> : ""}
             </div>
         );
