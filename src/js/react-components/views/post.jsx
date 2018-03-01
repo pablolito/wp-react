@@ -17,15 +17,11 @@ export class Post extends React.Component {
    
     getPost(articleId) {
         axios.get('/api/getPost/?id='+articleId).then(json => {
+            console.log(json.data);
             this.setState({
                 data: json.data
             });
         }).catch((onreject) => { this.setState({ isInError: true }) });
-    }
-
-    renderItemsList(data) {
-        let html = data.map((v, i) => <li dangerouslySetInnerHTML={{ __html: v }} key={i}></li>);
-        return html;
     }
 
     componentDidMount() {
@@ -45,7 +41,7 @@ export class Post extends React.Component {
 
         return (
             <div className="post">
-                <BannerPage title={this.state.data.title.rendered} description="" /*tagsList={this.state.tagsData}*/ returnLink={true} />
+                <BannerPage title={this.state.data.title.rendered} />
                 <div className="cnt-center">
 
                     <div className="row">

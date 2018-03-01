@@ -265,6 +265,7 @@ footer{
    width: 100%;
    margin-left: auto;
    margin-right: auto;
+   max-width: 100%;
    max-width: initial;
 }
 
@@ -546,7 +547,6 @@ footer{
     height: 100%;
     z-index: 101;
     display: flex;
-
     .container{
         max-width: 80%;
         iframe{

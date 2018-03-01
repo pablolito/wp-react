@@ -74,13 +74,13 @@ export class SliderAlbum extends React.Component {
 
             const imgs = this.domSlider.querySelectorAll('img');
             // vertical align for images
-            imgs.forEach((img) => {
-                img.style.maxHeight = this.windowHeight - 200 + "px";                
-                img.onload = () => {
-                    let marginTop = (this.windowHeight / 2) - ((img.height + 200) / 2);
-                    img.style.marginTop = marginTop + "px";
+            for (let i = 0; i < imgs.length; ++i) {
+                imgs[i].style.maxHeight = this.windowHeight - 200 + "px";                
+                imgs[i].onload = () => {
+                    let marginTop = (this.windowHeight / 2) - ((imgs[i].height + 200) / 2);
+                    imgs[i].style.marginTop = marginTop + "px";
                 }
-            });
+            }
         }
     }
     rightClickCall(e){

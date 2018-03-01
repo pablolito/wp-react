@@ -52,7 +52,7 @@ export class Director extends React.Component {
                                 <ReactCSSTransitionGroup key="1"
                                 transitionName="fade"
                                 transitionAppear={true}
-                                transitionAppearTimeout={100}
+                                transitionAppearTimeout={0}
                                 transitionEnter={false}
                                 transitionLeave={false}>
                                     <img src={this.state.data.acf.director_picture.url} />

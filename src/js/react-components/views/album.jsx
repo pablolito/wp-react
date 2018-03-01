@@ -64,7 +64,7 @@ export class Album extends React.Component {
                 <ReactCSSTransitionGroup key="1"
                     transitionName="fade"
                     transitionAppear={true}
-                    transitionAppearTimeout={300}
+                    transitionAppearTimeout={0}
                     transitionEnter={false}
                     transitionLeave={false}>
                     <img onClick={(e)=>this.loadSliderAlbum(index)} src={src} />
