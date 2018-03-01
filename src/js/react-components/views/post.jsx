@@ -17,7 +17,6 @@ export class Post extends React.Component {
    
     getPost(articleId) {
         axios.get('/api/getPost/?id='+articleId).then(json => {
-            console.log(json.data);
             this.setState({
                 data: json.data
             });
