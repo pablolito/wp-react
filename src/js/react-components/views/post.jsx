@@ -66,7 +66,7 @@ export class Post extends React.Component {
                     </div>
                     {(this.state.data.acf.trailer && this.state.data.acf.trailer_caption) ?
                         <div className="other mt2">
-                            <h3>Vidéos liées aux projets : </h3>
+                            <h3>Vidéos liées au projet : </h3>
                             <div className="info"><p>{this.state.data.acf.trailer_caption}</p></div>
                             <div className="other-flex">
                                 {embedTrailer}
