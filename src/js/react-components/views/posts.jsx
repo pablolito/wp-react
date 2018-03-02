@@ -58,7 +58,7 @@ export class Posts extends React.Component {
     }
 
     renderTagsList(item, index){
-        let itemList = <li className={(this.state.tagActiveIndex === index) ? 'active' : ''} key={'tags'+index} onClick={()=>this.getFilteredPost(item.id, index)}><span>{item.name}</span></li>;
+        const itemList = <li className={(this.state.tagActiveIndex === index) ? 'active' : ''} key={'tags'+index} onClick={()=>this.getFilteredPost(item.id, index)}><span>{item.name}</span></li>;
         return itemList;
     }
 
@@ -73,7 +73,7 @@ export class Posts extends React.Component {
             return (<Loader isInError={this.state.isInError} />);
         }
         
-        let sortDataByPush = this.state.data.sort(function(a,b) {return (a.acf.push_home > b.acf.push_home) ? -1 : ((b.acf.push_home > a.acf.push_home) ? 1 : 0);} );
+        const sortDataByPush = this.state.data.sort(function(a,b) {return (a.acf.push_home > b.acf.push_home) ? -1 : ((b.acf.push_home > a.acf.push_home) ? 1 : 0);} );
         
         return (
             <div className="posts">

@@ -24,14 +24,14 @@ export class Albums extends React.Component {
     }
 
     renderAlbumItem(value, index) {
-        let src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.primary}_${value.secret}.jpg`
-        let style = {
+        const src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.primary}_${value.secret}.jpg`
+        const style = {
             background: `url(${src}) center center no-repeat`,
             backgroundSize: 'cover',
             width: '300px',
             height: '300px'
         }
-        let albumsItem = <div key={value.id} className="shrink columns">
+        const albumsItem = <div key={value.id} className="shrink columns">
             <LazyLoad height={100}>
                 <ReactCSSTransitionGroup key="1"
                     transitionName="fade"

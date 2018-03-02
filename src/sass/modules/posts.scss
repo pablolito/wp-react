@@ -201,7 +201,7 @@
     padding-bottom: 3rem;
     .other{
         border-top: 1px dashed #ccc;
-        padding-top: 1rem;
+        padding: 1rem;
         h3{
             padding-bottom: 1rem;
             font-family: "Open Sans", sans-serif;
@@ -210,6 +210,17 @@
         .info{
             text-align: center;
             font-weight: bold;
+        }
+        .other-flex{
+            > div{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                > iframe{
+                    width: 100%;
+                    margin-bottom: 2rem;
+                }
+            }
         }
     }
     .director {
@@ -361,10 +372,24 @@
         }
         
         .customer-mozaic{
+            height: 600px;
             max-height: 600px;
             overflow: hidden;
             div{
                 width: 20%;
+                flex-shrink: 0;
+            }
+        }
+        .other{
+            h3{
+                text-align: center;
+            }
+            .other-flex{
+                > div{
+                    > iframe{
+                        width: 49%;
+                    }
+                }
             }
         }
     }

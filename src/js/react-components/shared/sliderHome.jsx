@@ -19,9 +19,9 @@ export class SliderHome extends React.Component {
     })
   }
   renderMovie(movieIndex){
-      let videoSrc = this.data[movieIndex];
-      let decoded = $('<div/>').html(videoSrc.acf.contenu_video).text();
-      let videoContent = <div dangerouslySetInnerHTML={{__html: decoded}}></div>
+      const videoSrc = this.data[movieIndex];
+      const decoded = $('<div/>').html(videoSrc.acf.contenu_video).text();
+      const videoContent = <div dangerouslySetInnerHTML={{__html: decoded}}></div>
       return videoContent;
   }
 
@@ -30,11 +30,11 @@ export class SliderHome extends React.Component {
   }
 
   renderItem(itemValue, itemKey){
-      let itemSrc = {
+      const itemSrc = {
         backgroundImage: 'url(' + itemValue.acf.upload_photo_slider.url + ')',
         backgroundPosition: 'center center'
       };
-      let htmlContent = <div key={itemKey} className="item" style={itemSrc}>
+      const htmlContent = <div key={itemKey} className="item" style={itemSrc}>
           {(itemValue.acf.contenu_video!=="") ?
           <svg onClick={(e)=>{this.toggleModal(itemKey)}} className="icon icon-play"><use xlinkHref="dist/images/sprite-icons.svg#icon-play2" /></svg>
           : null}
@@ -56,9 +56,11 @@ export class SliderHome extends React.Component {
   }
 
   renderSlideData(){
-    let sortSlideData = this.data.sort(function(a,b) {return (a.categories[0] < b.categories[0]) ? 1 : ((b.categories[0] < a.categories[0]) ? -1 : 0) });
+    const sortSlideData = this.data.sort(function(a,b) {
+      return (a.categories[0] < b.categories[0]) ? 1 : ((b.categories[0] < a.categories[0]) ? -1 : 0) 
+    });
     this.data = sortSlideData.filter(val=>val.acf.push_home === "1");
-    let result = this.data.map( (v, i) => ((v && i <= 3) ? this.renderItem(v, i) : null) );
+    const result = this.data.map( (v, i) => ((v && i <= 3) ? this.renderItem(v, i) : null) );
     return result;
   }
   

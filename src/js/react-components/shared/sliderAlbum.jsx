@@ -20,8 +20,8 @@ export class SliderAlbum extends React.Component {
 
     renderSlideData(value, index, nbSlide) {
 
-        let src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_h.jpg`;
-        let item = <div key={index}>
+        const src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_h.jpg`;
+        const item = <div key={index}>
             <img src={src} />
             {(this.state.photoDetail) ?
                 <div className="caption">
@@ -45,7 +45,7 @@ export class SliderAlbum extends React.Component {
     }
 
     findCurrentDetails(id){
-        let currentDetails = this.state.photoDetail.find(function (obj) { return obj.id === id; });
+        const currentDetails = this.state.photoDetail.find(function (obj) { return obj.id === id; });
         return {
             title: (currentDetails && currentDetails.title._content ? currentDetails.title._content : ""), 
             description: (currentDetails && currentDetails.description._content ? currentDetails.description._content : "")

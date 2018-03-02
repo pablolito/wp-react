@@ -66,18 +66,10 @@ export class Post extends React.Component {
                     </div>
                     {(this.state.data.acf.trailer && this.state.data.acf.trailer_caption) ?
                         <div className="other mt2">
-                            <div className="grid-x">
-                                <div className="columns small-12 medium-4 large-4">
-                                    <h3>Vidéos liées aux projets : </h3>
-                                </div>
-                            </div>
-                            <div className="grid-x">
-                                <div className="columns small-12 medium-4 large-4">
-                                    <div className="trailer">
-                                        {embedTrailer}
-                                    </div>
-                                    <div className="info"><p>{this.state.data.acf.trailer_caption}</p></div>
-                                </div>
+                            <h3>Vidéos liées aux projets : </h3>
+                            <div className="info"><p>{this.state.data.acf.trailer_caption}</p></div>
+                            <div className="other-flex">
+                                {embedTrailer}
                             </div>
                         </div>
                         : null

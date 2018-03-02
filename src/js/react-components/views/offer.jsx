@@ -26,7 +26,7 @@ export class Offer extends React.Component {
     }
 
     renderSection(title, photoSrc, description, topDesciption=false, urlLink, labelLink){
-        let html = <div>
+        const html = <div>
             <div className="text-center">
                 <div className="wraper-ttl">
                     <h1>{title}</h1>

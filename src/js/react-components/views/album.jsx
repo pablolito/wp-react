@@ -28,10 +28,10 @@ export class Album extends React.Component {
     }
 
     componentDidUpdate() {
-        let albumLayout = ReactDOM.findDOMNode(this.refs.albumLayout);
+        const albumLayout = ReactDOM.findDOMNode(this.refs.albumLayout);
         if (albumLayout) {
-            let offsetTopAlbumLayout = utils.offset(albumLayout).top;
-            let windowHeight = utils.getWindowHeight();
+            const offsetTopAlbumLayout = utils.offset(albumLayout).top;
+            const windowHeight = utils.getWindowHeight();
             albumLayout.style.height = `${windowHeight - offsetTopAlbumLayout - 89}px`;
         }
     }
@@ -58,8 +58,8 @@ export class Album extends React.Component {
     }
 
     renderPhotosList(value, index) {
-        let src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`;
-        let photoItem = <div key={value.id}>
+        const src = `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`;
+        const photoItem = <div key={value.id}>
             <LazyLoad height={100}>
                 <ReactCSSTransitionGroup key="1"
                     transitionName="fade"
@@ -87,9 +87,9 @@ export class Album extends React.Component {
             }
         );
         datasPrimaryPhoto = datasPrimaryPhoto[0];
-        let src = `https://farm${datasPrimaryPhoto.farm}.staticflickr.com/${datasPrimaryPhoto.server}/${datasPrimaryPhoto.id}_${datasPrimaryPhoto.secret}_h.jpg`;
+        const src = `https://farm${datasPrimaryPhoto.farm}.staticflickr.com/${datasPrimaryPhoto.server}/${datasPrimaryPhoto.id}_${datasPrimaryPhoto.secret}_h.jpg`;
 
-        let style = {
+        const style = {
             background: `url(${src}) 0 center fixed no-repeat`,
             backgroundSize: 'cover'
         };

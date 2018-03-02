@@ -7,11 +7,11 @@ export class BannerPage extends React.Component {
         super(props);
     }
     renderTagsList(v, i) {
-        let items = <li key={i}>{v.name}</li>;
+        const items = <li key={i}>{v.name}</li>;
         return items;
     }
     render() {
-        let titleDecode = utils.htmlEntitiesDecode(this.props.title),
+        const titleDecode = utils.htmlEntitiesDecode(this.props.title),
             descriptionDecode = utils.htmlEntitiesDecode(this.props.description);
         return (
             <div className="banner">
