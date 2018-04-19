@@ -33,6 +33,7 @@ app.get('/api/getPhotosList', function (req, res) {
   axiosGet(reqParams, res);
 });
 
+
 app.get('/api/getAlbumInfos', function (req, res) {
   let reqParams = {
     method : "flickr.photosets.getInfo",
