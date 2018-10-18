@@ -24,6 +24,8 @@ npm run build-prod
 }`
 
 ## TODO :
+* Remove class and constructor when it is not useful (dump component)
+* Optimize requests in error
 * Redux implementation
 * Jest tests
 * Optim heroku conf var env
