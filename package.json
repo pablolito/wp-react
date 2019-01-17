@@ -1,6 +1,6 @@
 {
   "name": "react-wp",
-  "version": "1.0.0",
+  "version": "v8.11.3",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
