@@ -56,7 +56,7 @@ app.get('/api/getAllPostsHome', function (req, res) {
 });
 
 app.get('/api/getAllPosts', function (req, res) {
-  simpleAxiosGet(`${wpUrlApi}/posts?categories=15`, res);
+  simpleAxiosGet(`${wpUrlApi}/posts?categories=15&per_page=50`, res);
 });
 
 app.get('/api/getPost', function (req, res) {

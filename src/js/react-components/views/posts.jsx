@@ -27,9 +27,9 @@ export class Posts extends React.Component {
     getPostsList(){
         axios.get('/api/getAllPosts').then(json => {
             // get tags list 
-            json.data.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
-            this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
-            this.getTagsList(this.tagsTab);
+            // json.data.map( (item, index) => (item.tags.length > 0) ? this.addTagsInArray(item.tags) : null ); // loop 1
+            // this.tagsTab = this.tagsTab.filter((v, i, a) => a.indexOf(v) === i); // filter for unique value
+            // this.getTagsList(this.tagsTab);
             // put json data in state
             this.setState({
                 data : json.data,
@@ -74,7 +74,8 @@ export class Posts extends React.Component {
         }
         
         const sortDataByPush = this.state.data.sort(function(a,b) {return (a.acf.push_home > b.acf.push_home) ? -1 : ((b.acf.push_home > a.acf.push_home) ? 1 : 0);} );
-        
+        console.log(this.state.data);
+
         return (
             <div className="posts">
                 <BannerPage title="Mes dernières réalisations" />
